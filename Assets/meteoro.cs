@@ -25,7 +25,7 @@ public class meteoro : MonoBehaviour
             GameManager.manager.poblacion = GameManager.manager.poblacion - ((GameManager.manager.poblacion * Random.Range(10, 15)) / 100);
             gameObject.SetActive(false);
         }
-        else
+        else if (gameObject.tag == "Ground")
         {
             GameManager.manager.poblacion = GameManager.manager.poblacion - ((GameManager.manager.poblacion * Random.Range(10, 30)) / 100);
             gameObject.SetActive(false);
