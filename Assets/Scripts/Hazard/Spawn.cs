@@ -107,6 +107,7 @@ public class Spawn : MonoBehaviour
         {
             z = Point - usedRadius;
         }
+        
         GameObject met = pool.GetObj(index);
         met.transform.position = new Vector3(x, y, z);
         met.transform.LookAt(2 * met.transform.position - transform.position);

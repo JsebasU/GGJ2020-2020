@@ -330,9 +330,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1494669331}
-        m_MethodName: changeValue
-        m_Mode: 3
+      - m_Target: {fileID: 1285972802}
+        m_MethodName: invoke
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -693,21 +693,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 084ebb8c348dff64590e132232dd7156, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volcan: []
   volcanPrefb: {fileID: 2781150839319602386, guid: 463e3c7f5bac6c149990e6ffed86aa22,
     type: 3}
-  meteorito: []
   meteoritoPrefb: {fileID: 9030666393370153364, guid: 5ac74a6525f319a4db2fdf7660b7cc21,
     type: 3}
-  radiacion: []
   radiacionPrefb: {fileID: 3254066177041834378, guid: f386916ece678cc47a90ca5dfb83b085,
     type: 3}
-  incendio: []
   incendioPrefb: {fileID: 8988751177943868887, guid: 14100ef0fc0a2124fb0875dcee19892d,
     type: 3}
-  pandemia: []
   pandemiaPrefb: {fileID: 7888883031542152041, guid: 93352abc5955e0645995e99d78a2fe18,
     type: 3}
+  poolSize: 5
 --- !u!4 &1285972803
 Transform:
   m_ObjectHideFlags: 0
