@@ -4,30 +4,37 @@ using UnityEngine;
 
 public class PoolObj : MonoBehaviour
 {
-    GameObject[] volcan = new GameObject[0];
+    [SerializeField] GameObject[] volcan = new GameObject[0];
     [SerializeField] GameObject volcanPrefb = null;
 
-    GameObject[] meteorito = new GameObject[0];
+    [SerializeField] GameObject[] meteorito = new GameObject[0];
     [SerializeField] GameObject meteoritoPrefb = null;
 
-    GameObject[] radiacion = new GameObject[0];
+    [SerializeField] GameObject[] radiacion = new GameObject[0];
     [SerializeField] GameObject radiacionPrefb = null;
 
-    GameObject[] incendio = new GameObject[0];
+    [SerializeField] GameObject[] incendio = new GameObject[0];
     [SerializeField] GameObject incendioPrefb = null;
 
-    GameObject[] pandemia = new GameObject[0];
+    [SerializeField] GameObject[] pandemia = new GameObject[0];
     [SerializeField] GameObject pandemiaPrefb = null;
 
     private void Awake()
     {
-        CreatePool(5,volcan,volcanPrefb);
-        CreatePool(5,meteorito,meteoritoPrefb);
-        CreatePool(5,radiacion,radiacionPrefb);
-        CreatePool(5,incendio,incendioPrefb);
-        CreatePool(5,pandemia,pandemiaPrefb);
+        volcan = new GameObject[5];
+        meteorito = new GameObject[5];
+        radiacion = new GameObject[5];
+        incendio = new GameObject[5];
+        pandemia = new GameObject[5];
     }
-
+    private void Start()
+    {
+        CreatePool(5, volcan, volcanPrefb);
+        CreatePool(5, meteorito, meteoritoPrefb);
+        CreatePool(5, radiacion, radiacionPrefb);
+        CreatePool(5, incendio, incendioPrefb);
+        CreatePool(5, pandemia, pandemiaPrefb);
+    }
     void CreatePool(int count,GameObject[] pool,GameObject prefab)
     {
         pool = new GameObject[count];
@@ -96,5 +103,11 @@ public class PoolObj : MonoBehaviour
             }
         }
     }
+
+    public void invoke(int index) {
+        GameObject x = GetObj(index);
+        x.transform.position = new Vector3(Random.Range(-10, 10), Random.Range(-10, 10), Random.Range(-10, 10));
+    }
+
 
 }
