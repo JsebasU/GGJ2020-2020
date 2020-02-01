@@ -1,42 +1,52 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using JetBrains.Annotations;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class PoolObj : MonoBehaviour
 {
-    GameObject[] volcan = new GameObject[0];
-    [SerializeField] GameObject volcanPrefb = null;
-
-    GameObject[] meteorito = new GameObject[0];
+    [SerializeField] GameObject volcanPrefb;
     [SerializeField] GameObject meteoritoPrefb = null;
-
-    GameObject[] radiacion = new GameObject[0];
     [SerializeField] GameObject radiacionPrefb = null;
-
-    GameObject[] incendio = new GameObject[0];
     [SerializeField] GameObject incendioPrefb = null;
-
-    GameObject[] pandemia = new GameObject[0];
     [SerializeField] GameObject pandemiaPrefb = null;
 
-    private void Awake()
+    public Dictionary<string, GameObject> Pool = new Dictionary<string, GameObject>();
+    
+    public int poolSize = 5;
+
+    private void Start()
     {
-        CreatePool(5,volcan,volcanPrefb);
-        CreatePool(5,meteorito,meteoritoPrefb);
-        CreatePool(5,radiacion,radiacionPrefb);
-        CreatePool(5,incendio,incendioPrefb);
-        CreatePool(5,pandemia,pandemiaPrefb);
+        CreatePool(volcanPrefb, poolSize);
+        CreatePool(meteoritoPrefb, poolSize);
+        CreatePool(radiacionPrefb, poolSize);
+        CreatePool(incendioPrefb, poolSize);
+        CreatePool(pandemiaPrefb, poolSize);
     }
 
-    void CreatePool(int count,GameObject[] pool,GameObject prefab)
+    void CreatePool(GameObject prefab, int size)
     {
-        pool = new GameObject[count];
-        for(int i = 0; i < count; i++)
+        for (int i = 0; i < size; i++)
         {
-            pool[i] = Instantiate(prefab);
-            pool[i].SetActive(false);
+            Pool.Add(prefab.name + i, Instantiate(prefab, this.transform));
         }
     }
+
+    public GameObject GetFromPool(string name)
+    {
+        if (Pool.ContainsKey(name))
+        {
+            GameObject newObject;
+            Pool.TryGetValue(name, out newObject);
+            return newObject;
+        }
+        return null;
+    }
+    
+    /*
     /// <summary>
     /// Obtiene un objeto del pool de objetos usando un numero/index para obtener de diferente tipo de pools
     /// </summary>
@@ -49,6 +59,7 @@ public class PoolObj : MonoBehaviour
     /// 4 = pandemia.
     /// </param>
     /// <returns></returns>
+    
     public GameObject GetObj(int prefab)
     {
         GameObject returnValue = null;
@@ -96,5 +107,15 @@ public class PoolObj : MonoBehaviour
             }
         }
     }
+    */
+    public void invoke(string name)
+    {
+        if (Pool.ContainsKey(name))
+        {
+            GameObject x = GetFromPool(name);
+            x.transform.position = new Vector3(Random.Range(-10, 10), Random.Range(-10, 10), Random.Range(-10, 10));
+        }
+    }
+
 
 }
