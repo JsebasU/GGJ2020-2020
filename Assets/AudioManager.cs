@@ -12,6 +12,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioSource mainMenuMusic = null;
 
     public static AudioManager manager = null;
+
     [SerializeField] int actualTension = 0;
     [SerializeField] int globalTension = 0;
     public int Tension
@@ -37,17 +38,22 @@ public class AudioManager : MonoBehaviour
                     if (Tension == 1)
                     {
                         valueVolumen = tensionMusic.volume;
-                        relaxMusic.volume = 0;
                         StartCoroutine(FadeIn(valueVolumen, eventsMusic));
                         StartCoroutine(FadeOut(valueVolumen, tensionMusic));
-                        StartCoroutine(FadeOut(valueVolumen, tensionMusic));
+                        if (relaxMusic.volume > 0)
+                        {
+                            StartCoroutine(FadeOut(relaxMusic.volume, tensionMusic));
+                        }
                     }
                     else if (Tension == 0)
                     {
                         valueVolumen = eventsMusic.volume;
-                        tensionMusic.volume = 0;
                         StartCoroutine(FadeIn(valueVolumen, relaxMusic));
                         StartCoroutine(FadeOut(valueVolumen, eventsMusic));
+                        if (tensionMusic.volume > 0)
+                        {
+                            StartCoroutine(FadeOut(tensionMusic.volume, tensionMusic));
+                        }
                     }
                 }
                 else if (Tension > actualTension)
@@ -55,23 +61,24 @@ public class AudioManager : MonoBehaviour
                     if (Tension == 1)
                     {
                         valueVolumen = relaxMusic.volume;
-                        tensionMusic.volume = 0;
                         StartCoroutine(FadeIn(valueVolumen, eventsMusic));
                         StartCoroutine(FadeOut(valueVolumen, relaxMusic));
+                        if (tensionMusic.volume > 0)
+                        {
+                            StartCoroutine(FadeOut(tensionMusic.volume, tensionMusic));
+                        }
                     }
                     else if (Tension == 2)
                     {
                         valueVolumen = eventsMusic.volume;
-                        relaxMusic.volume = 0;
                         StartCoroutine(FadeIn(valueVolumen, tensionMusic));
                         StartCoroutine(FadeOut(valueVolumen, eventsMusic));
+                        if (relaxMusic.volume > 0)
+                        {
+                            StartCoroutine(FadeOut(relaxMusic.volume, tensionMusic));
+                        }
                     }
                 }
-                else if(Tension == actualTension)
-                {
-                    Debug.Log("GG");
-                }
-
             }
         }
 
@@ -131,10 +138,4 @@ public class AudioManager : MonoBehaviour
         }
         actualTension = Tension;
     }
-
-    public void changeValue (int value)
-    {
-        Tension += value;
-    }
-
 }
