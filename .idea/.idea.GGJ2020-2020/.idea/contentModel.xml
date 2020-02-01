@@ -11,6 +11,9 @@
         <e p="LoadingScene.cs" t="Include" />
         <e p="PoolObj.cs" t="Include" />
         <e p="Population.cs" t="Include" />
+        <e p="scipts - sar" t="Include">
+          <e p="playerSeed.cs" t="Include" />
+        </e>
         <e p="Scripts" t="Include">
           <e p="GameVariables.cs" t="Include" />
           <e p="Hazard" t="Include">
