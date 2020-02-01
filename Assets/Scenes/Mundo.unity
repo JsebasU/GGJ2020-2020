@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 263263892}
   m_Layer: 0
   m_Name: Sphere
-  m_TagString: Untagged
+  m_TagString: Ocean
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -229,9 +229,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meteorito: {fileID: 9030666393370153364, guid: 5ac74a6525f319a4db2fdf7660b7cc21,
     type: 3}
-  volcan: {fileID: 0}
+  volcan: {fileID: 8998948541573246386, guid: 5a74c469848c6c44dab439f8e301a56f, type: 3}
   radiacion: {fileID: 0}
   incendio: {fileID: 0}
+  Pandemia: {fileID: 0}
 --- !u!1 &965277397
 GameObject:
   m_ObjectHideFlags: 0
