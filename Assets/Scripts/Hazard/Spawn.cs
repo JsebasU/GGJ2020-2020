@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class Spawn : MonoBehaviour
 {
-    public enum Desatres { Meterito, Volcan, Radiacion, Pandemia, Incendios,length };
-    private PoolObj pool; 
+    public enum Desatres { Meteorito, Volcan, Radiacion, Pandemia, Incendios, length };
+    public PoolObj pool; 
     Desatres desatres = Desatres.Incendios;
     float timer;
     float chaosEvent;
     // Start is called before the first frame update
     private void Awake()
     {
-        pool = FindObjectOfType<PoolObj>();
+        //pool = FindObjectOfType<PoolObj>();
     }
     void Start()
     {
@@ -26,7 +26,7 @@ public class Spawn : MonoBehaviour
         if (timer >= chaosEvent)
         {
             Start();
-            desatres = (Desatres)Random.Range(0, (int)Desatres.length);
+            desatres = (Desatres)Random.Range(0, (int)Desatres.length - 1);
             Debug.Log(desatres);
             cases();
             timer = 0;
@@ -36,8 +36,10 @@ public class Spawn : MonoBehaviour
     {
         switch (desatres)
         {
-            case Desatres.Meterito:
+            case Desatres.Meteorito:
             {
+                Debug.Log("Meteorito");
+
                 float Point = GetComponent<SphereCollider>().radius;
 
                     float usedRadius = 0;
@@ -55,38 +57,45 @@ public class Spawn : MonoBehaviour
                     else
                     {
                         z = Point - usedRadius;
-                    }/*
-                    GameObject met = pool.GetObj(1);
+                    }
+                    GameObject met = pool.GetObject(GameVariables.METEORITO_PREFAB);
                     met.transform.position = new Vector3(x * (Random.Range(10, 30)), y * (Random.Range(10, 30)), z * (Random.Range(10, 30)));
                     met.transform.SetParent(gameObject.transform);
-                    met.SetActive(true);*/
+                    met.SetActive(true);
                     break;
             }
             case Desatres.Incendios:
             {
-                    mirarPlaneta(3);
+                Debug.Log("Incendio");
+
+                    mirarPlaneta(GameVariables.INCENDIO_PREFAB);
                     break;
             }
             case Desatres.Pandemia:
             {
-                    mirarPlaneta(4);
+                Debug.Log("Pandemia");
+
+                    mirarPlaneta(GameVariables.PANDEMIA_PREFAB);
                     break;
             }
             case Desatres.Volcan:
             {
-                    mirarPlaneta(0);
+                Debug.Log("Volcan");
+
+                    mirarPlaneta(GameVariables.VOLCAN_PREFAB);
                     break;
             }
             case Desatres.Radiacion:
             {
+                Debug.Log("Radiacion");
 
-                    mirarPlaneta(2);
+                    mirarPlaneta(GameVariables.RADIACION_PREFAB);
                     break;
             }
         }
        
     }
-    void mirarPlaneta(int index)
+    void mirarPlaneta(string name)
     {
         float Point = GetComponent<SphereCollider>().radius;
 
@@ -106,11 +115,11 @@ public class Spawn : MonoBehaviour
         {
             z = Point - usedRadius;
         }
-        /*
-        GameObject met = pool.GetObj(index);
+        
+        GameObject met = pool.GetObject(name);
         met.transform.position = new Vector3(x, y, z);
         met.transform.LookAt(2 * met.transform.position - transform.position);
         met.transform.SetParent(gameObject.transform);
-        met.SetActive(true);*/
+        met.SetActive(true);
     }
 }

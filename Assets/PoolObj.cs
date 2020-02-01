@@ -20,7 +20,7 @@ public class PoolObj : MonoBehaviour
         CreatePool(GameVariables.METEORITO_PREFAB, poolSize);
         CreatePool(GameVariables.RADIACION_PREFAB, poolSize);
         CreatePool(GameVariables.INCENDIO_PREFAB, poolSize);
-        //CreatePool((GameObject) Resources.Load(GameVariables.PANDEMIA_PREFAB), poolSize);
+        CreatePool(GameVariables.PANDEMIA_PREFAB, poolSize);
     }
     
     void CreatePool(string prefabPath, int size)
@@ -31,6 +31,7 @@ public class PoolObj : MonoBehaviour
         for (int i = 0; i < size; i++)
         {
             GameObject newObject = Instantiate(newGameObject, this.transform);
+            newObject.SetActive(false);
             newObject.name.Replace("(Clone)", "");
             newStack.Push(newObject);
         }
@@ -47,6 +48,7 @@ public class PoolObj : MonoBehaviour
             for (int i = 0; i < newSize; i++)
             {
                 GameObject newObject = Instantiate((GameObject) Resources.Load(poolName), this.transform);
+                newObject.SetActive(false);
                 newObject.name.Replace("(Clone)", "");
                 stack.Push(newObject);
             }

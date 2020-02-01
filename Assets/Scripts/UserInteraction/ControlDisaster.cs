@@ -7,6 +7,8 @@ using UnityEngine.EventSystems;
 public class ControlDisaster : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
 
+    InteractableBase actualInteractable = null;
+
     public void OnPointerDown(PointerEventData eventData)
     {
         RaycastHit hit;
@@ -15,13 +17,15 @@ public class ControlDisaster : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         {
             if (hit.collider.CompareTag("Interactable"))
             {
-                // Inicia la interaccion con el objeto
+                actualInteractable = hit.collider.GetComponent<InteractableBase>();
+                actualInteractable.OnStartInteraction();
             }
         }
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        // Deja de interactuar
+        if(actualInteractable != null)
+            actualInteractable.OnCancelInteraction();
     }
 }
