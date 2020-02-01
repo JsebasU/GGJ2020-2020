@@ -15,6 +15,7 @@
           <e p="playerSeed.cs" t="Include" />
         </e>
         <e p="Scripts" t="Include">
+          <e p="GameController.cs" t="Include" />
           <e p="GameVariables.cs" t="Include" />
           <e p="Hazard" t="Include">
             <e p="meteoro.cs" t="Include" />
