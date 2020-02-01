@@ -21,6 +21,7 @@ public class PoolObj : MonoBehaviour
         CreatePool(GameVariables.RADIACION_PREFAB, poolSize);
         CreatePool(GameVariables.INCENDIO_PREFAB, poolSize);
         CreatePool(GameVariables.PANDEMIA_PREFAB, poolSize);
+        CreatePool(GameVariables.CASA_PREFAB, poolSize);
     }
     
     void CreatePool(string prefabPath, int size)
