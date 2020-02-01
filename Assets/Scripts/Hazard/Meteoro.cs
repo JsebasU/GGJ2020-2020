@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class meteoro : MonoBehaviour
+public class Meteoro : MonoBehaviour
 {
     Rigidbody rb;
     public float velocity = 2;
@@ -25,7 +25,7 @@ public class meteoro : MonoBehaviour
             GameManager.manager.poblacion = GameManager.manager.poblacion - ((GameManager.manager.poblacion * Random.Range(10, 15)) / 100);
             gameObject.SetActive(false);
         }
-        else if (gameObject.tag == "Ground")
+        else
         {
             GameManager.manager.poblacion = GameManager.manager.poblacion - ((GameManager.manager.poblacion * Random.Range(10, 30)) / 100);
             gameObject.SetActive(false);

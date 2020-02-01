@@ -227,12 +227,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 593c1bafd17b6614f857f27ddf2e1c66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meteorito: {fileID: 9030666393370153364, guid: 5ac74a6525f319a4db2fdf7660b7cc21,
-    type: 3}
-  volcan: {fileID: 8998948541573246386, guid: 5a74c469848c6c44dab439f8e301a56f, type: 3}
-  radiacion: {fileID: 0}
-  incendio: {fileID: 0}
-  Pandemia: {fileID: 0}
 --- !u!1 &965277397
 GameObject:
   m_ObjectHideFlags: 0
@@ -244,6 +238,7 @@ GameObject:
   - component: {fileID: 965277400}
   - component: {fileID: 965277399}
   - component: {fileID: 965277398}
+  - component: {fileID: 965277401}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -316,6 +311,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &965277401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 965277397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f3b2dd2b784a6e46bfaeeb84aaf760c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  worldMaterial: {fileID: 0}
+  playerName: 
+  poblacion: 0
+  minTimeEvent: 5
+  maxTimeEvent: 10
 --- !u!1 &1095122002
 GameObject:
   m_ObjectHideFlags: 0
@@ -326,6 +338,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1095122004}
   - component: {fileID: 1095122003}
+  - component: {fileID: 1095122005}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -408,3 +421,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &1095122005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1095122002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 084ebb8c348dff64590e132232dd7156, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volcanPrefb: {fileID: 2781150839319602386, guid: 463e3c7f5bac6c149990e6ffed86aa22,
+    type: 3}
+  meteoritoPrefb: {fileID: 9030666393370153364, guid: 5ac74a6525f319a4db2fdf7660b7cc21,
+    type: 3}
+  radiacionPrefb: {fileID: 3254066177041834378, guid: f386916ece678cc47a90ca5dfb83b085,
+    type: 3}
+  incendioPrefb: {fileID: 8988751177943868887, guid: 14100ef0fc0a2124fb0875dcee19892d,
+    type: 3}
+  pandemiaPrefb: {fileID: 7888883031542152041, guid: 93352abc5955e0645995e99d78a2fe18,
+    type: 3}
