@@ -18,9 +18,18 @@ public class meteoro : MonoBehaviour
     {
         rb.velocity = transform.forward * velocity; 
     }
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        // -Poblacion
-        gameObject.SetActive(false);
+        if(gameObject.tag == "Ocean")
+        {
+            GameManager.manager.poblacion = GameManager.manager.poblacion - ((GameManager.manager.poblacion * Random.Range(10, 15)) / 100);
+            gameObject.SetActive(false);
+        }
+        else
+        {
+            GameManager.manager.poblacion = GameManager.manager.poblacion - ((GameManager.manager.poblacion * Random.Range(10, 30)) / 100);
+            gameObject.SetActive(false);
+        }
+        
     }
 }

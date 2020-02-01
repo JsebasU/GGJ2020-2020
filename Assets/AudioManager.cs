@@ -81,6 +81,7 @@ public class AudioManager : MonoBehaviour
             case 2:
                 break;
         }
+        yield return null;
     }
-
+    
 }
