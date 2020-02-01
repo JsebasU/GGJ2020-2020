@@ -47,6 +47,7 @@ public class PoolObj : MonoBehaviour
             for (int i = 0; i < newSize; i++)
             {
                 GameObject newObject = Instantiate((GameObject) Resources.Load(poolName), this.transform);
+                newObject.SetActive(false);
                 newObject.name.Replace("(Clone)", "");
                 stack.Push(newObject);
             }
