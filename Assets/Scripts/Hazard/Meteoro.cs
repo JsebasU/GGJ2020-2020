@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class meteoro : MonoBehaviour
+public class Meteoro : MonoBehaviour
 {
     Rigidbody rb;
     public float velocity = 2;
