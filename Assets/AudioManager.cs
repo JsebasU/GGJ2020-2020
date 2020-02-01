@@ -12,26 +12,66 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioSource mainMenuMusic = null;
 
     public static AudioManager manager = null;
-
-    int globalTension = 0;
+    [SerializeField] int actualTension = 0;
+    [SerializeField] int globalTension = 0;
     public int Tension
     {
         get
         {
-            return Tension;
+            return globalTension;
         }
 
         set
         {
-            if (value > 2)
+            if (value > 2 || value < 0)
             {
-                ModifyMusic(2);
-                globalTension = 2;
+                return;
             }
             else
             {
-                ModifyMusic(value);
                 globalTension = value;
+                float valueVolumen = 0;
+                StopAllCoroutines();
+                if (Tension < actualTension)
+                {
+                    if (Tension == 1)
+                    {
+                        valueVolumen = tensionMusic.volume;
+                        relaxMusic.volume = 0;
+                        StartCoroutine(FadeIn(valueVolumen, eventsMusic));
+                        StartCoroutine(FadeOut(valueVolumen, tensionMusic));
+                        StartCoroutine(FadeOut(valueVolumen, tensionMusic));
+                    }
+                    else if (Tension == 0)
+                    {
+                        valueVolumen = eventsMusic.volume;
+                        tensionMusic.volume = 0;
+                        StartCoroutine(FadeIn(valueVolumen, relaxMusic));
+                        StartCoroutine(FadeOut(valueVolumen, eventsMusic));
+                    }
+                }
+                else if (Tension > actualTension)
+                {
+                    if (Tension == 1)
+                    {
+                        valueVolumen = relaxMusic.volume;
+                        tensionMusic.volume = 0;
+                        StartCoroutine(FadeIn(valueVolumen, eventsMusic));
+                        StartCoroutine(FadeOut(valueVolumen, relaxMusic));
+                    }
+                    else if (Tension == 2)
+                    {
+                        valueVolumen = eventsMusic.volume;
+                        relaxMusic.volume = 0;
+                        StartCoroutine(FadeIn(valueVolumen, tensionMusic));
+                        StartCoroutine(FadeOut(valueVolumen, eventsMusic));
+                    }
+                }
+                else if(Tension == actualTension)
+                {
+                    Debug.Log("GG");
+                }
+
             }
         }
 
@@ -43,14 +83,23 @@ public class AudioManager : MonoBehaviour
         {
             manager = this;
             DontDestroyOnLoad(gameObject);
-            if (SceneManager.GetActiveScene().buildIndex == 0)
+
+            relaxMusic.volume = 1;
+            eventsMusic.volume = 0;
+            tensionMusic.volume = 0;
+            relaxMusic.Play();
+            eventsMusic.Play();
+            tensionMusic.Play();
+            actualTension = Tension;
+
+            /*if (SceneManager.GetActiveScene().buildIndex == 0)
             {
                 //mainmenu
             }
             else
             {
                 //InGame
-            }
+            }*/
         }
         else
         {
@@ -58,30 +107,34 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    void ModifyMusic(int value)
+    IEnumerator FadeOut(float valueVolumen,AudioSource FadeOut)
     {
-        if(value == globalTension)
+        Debug.Log("Out");
+        while (valueVolumen > 0)
         {
-
+            valueVolumen -= Time.deltaTime;
+            FadeOut.volume = valueVolumen;
+            yield return null;
         }
-        else
-        {
-
-        }
+        actualTension = Tension;
     }
 
-    IEnumerator FadeInOut(int value)
+    IEnumerator FadeIn(float valueVolumen, AudioSource fadeIn)
     {
-        switch (value)
+        float internalValue = 0;
+        Debug.Log("In");
+        while (internalValue < valueVolumen)
         {
-            case 0:
-                break;
-            case 1:
-                break;
-            case 2:
-                break;
+            internalValue += Time.deltaTime;
+            fadeIn.volume = internalValue / valueVolumen;
+            yield return null;
         }
-        yield return null;
+        actualTension = Tension;
     }
-    
+
+    public void changeValue (int value)
+    {
+        Tension += value;
+    }
+
 }
