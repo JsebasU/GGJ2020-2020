@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Spawn : MonoBehaviour
 {
-    public enum Desatres { Meterito, Volcan, Radiacion, Pandemia, Incendios,length };
+    public enum Desatres { Meteorito, Volcan, Radiacion, Pandemia, Incendios, length };
     public PoolObj pool; 
     Desatres desatres = Desatres.Incendios;
     float timer;
@@ -26,7 +26,7 @@ public class Spawn : MonoBehaviour
         if (timer >= chaosEvent)
         {
             Start();
-            desatres = (Desatres)Random.Range(0, (int)Desatres.length);
+            desatres = (Desatres)Random.Range(0, (int)Desatres.length - 1);
             Debug.Log(desatres);
             cases();
             timer = 0;
@@ -36,8 +36,10 @@ public class Spawn : MonoBehaviour
     {
         switch (desatres)
         {
-            case Desatres.Meterito:
+            case Desatres.Meteorito:
             {
+                Debug.Log("Meteorito");
+
                 float Point = GetComponent<SphereCollider>().radius;
 
                     float usedRadius = 0;
@@ -64,21 +66,28 @@ public class Spawn : MonoBehaviour
             }
             case Desatres.Incendios:
             {
+                Debug.Log("Incendio");
+
                     mirarPlaneta(GameVariables.INCENDIO_PREFAB);
                     break;
             }
             case Desatres.Pandemia:
             {
+                Debug.Log("Pandemia");
+
                     mirarPlaneta(GameVariables.PANDEMIA_PREFAB);
                     break;
             }
             case Desatres.Volcan:
             {
+                Debug.Log("Volcan");
+
                     mirarPlaneta(GameVariables.VOLCAN_PREFAB);
                     break;
             }
             case Desatres.Radiacion:
             {
+                Debug.Log("Radiacion");
 
                     mirarPlaneta(GameVariables.RADIACION_PREFAB);
                     break;
@@ -106,11 +115,11 @@ public class Spawn : MonoBehaviour
         {
             z = Point - usedRadius;
         }
-        /*
+        
         GameObject met = pool.GetObject(name);
         met.transform.position = new Vector3(x, y, z);
         met.transform.LookAt(2 * met.transform.position - transform.position);
         met.transform.SetParent(gameObject.transform);
-        met.SetActive(true);*/
+        met.SetActive(true);
     }
 }
