@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ControlDisaster : MonoBehaviour, IPointerDownHandler
+public class ControlDisaster : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
 
     public void OnPointerDown(PointerEventData eventData)
@@ -15,8 +15,13 @@ public class ControlDisaster : MonoBehaviour, IPointerDownHandler
         {
             if (hit.collider.CompareTag("Interactable"))
             {
-                // TODO: Conectar con el manager o cada entidad que vaya a reaccionar
+                // Inicia la interaccion con el objeto
             }
         }
+    }
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        // Deja de interactuar
     }
 }

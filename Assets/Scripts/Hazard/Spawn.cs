@@ -34,7 +34,6 @@ public class Spawn : MonoBehaviour
     }
     void cases()
     {
-        
         switch (desatres)
         {
             case Desatres.Meterito:
@@ -56,11 +55,11 @@ public class Spawn : MonoBehaviour
                     else
                     {
                         z = Point - usedRadius;
-                    }
+                    }/*
                     GameObject met = pool.GetObj(1);
                     met.transform.position = new Vector3(x * (Random.Range(10, 30)), y * (Random.Range(10, 30)), z * (Random.Range(10, 30)));
                     met.transform.SetParent(gameObject.transform);
-                    met.SetActive(true);
+                    met.SetActive(true);*/
                     break;
             }
             case Desatres.Incendios:
@@ -107,11 +106,11 @@ public class Spawn : MonoBehaviour
         {
             z = Point - usedRadius;
         }
-        
+        /*
         GameObject met = pool.GetObj(index);
         met.transform.position = new Vector3(x, y, z);
         met.transform.LookAt(2 * met.transform.position - transform.position);
         met.transform.SetParent(gameObject.transform);
-        met.SetActive(true);
+        met.SetActive(true);*/
     }
 }
