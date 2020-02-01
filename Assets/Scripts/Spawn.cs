@@ -4,18 +4,15 @@ using UnityEngine;
 
 public class Spawn : MonoBehaviour
 {
-    public PoolObj pool; 
+    public PoolObj pool;
+    public SphereCollider WorldCollider;
     GameVariables.Desatres desatres = GameVariables.Desatres.Incendios;
     float timer;
     float chaosEvent;
-    // Start is called before the first frame update
-    private void Awake()
-    {
-        //pool = FindObjectOfType<PoolObj>();
-    }
+    
     void Start()
     {
-        chaosEvent = Random.Range(GameManager.manager.minTimeEvent, GameManager.manager.maxTimeEvent);
+        chaosEvent = Random.Range(GameVariables.minTimeEvent, GameVariables.maxTimeEvent);
     }
 
     // Update is called once per frame
@@ -39,7 +36,7 @@ public class Spawn : MonoBehaviour
             {
                 Debug.Log("Meteorito");
 
-                float Point = GetComponent<SphereCollider>().radius;
+                float Point = WorldCollider.radius;
 
                     float usedRadius = 0;
 
@@ -96,7 +93,7 @@ public class Spawn : MonoBehaviour
     
     void mirarPlaneta(string name)
     {
-        float Point = GetComponent<SphereCollider>().radius;
+        float Point = WorldCollider.radius;
 
         float usedRadius = 0;
 

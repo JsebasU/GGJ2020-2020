@@ -14,4 +14,7 @@ public class GameVariables
 
     public enum Desatres { Meteorito, Volcan, Radiacion, Pandemia, Incendios};
     public enum GameState {Menu, Game, Win, Lose};
+    
+    public static float minTimeEvent = 5;
+    public static float maxTimeEvent = 10;
 }
