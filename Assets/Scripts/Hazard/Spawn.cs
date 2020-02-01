@@ -16,7 +16,6 @@ public class Spawn : MonoBehaviour
     }
     void Start()
     {
-
         chaosEvent = Random.Range(GameManager.manager.minTimeEvent, GameManager.manager.maxTimeEvent);
     }
 
@@ -26,6 +25,7 @@ public class Spawn : MonoBehaviour
         timer += Time.deltaTime;
         if (timer >= chaosEvent)
         {
+            Start();
             desatres = (Desatres)Random.Range(0, (int)Desatres.length);
             Debug.Log(desatres);
             cases();
