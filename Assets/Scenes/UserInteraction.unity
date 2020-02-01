@@ -477,10 +477,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 305c26b314ce2b54c9c53399d8e13414, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraDistance: -8
   cameraZoomSpeed: 0.005
   cameraOrthoRange: {x: 0.5, y: 4}
   cameraPerspRange: {x: 3, y: 36}
+  cameraMaxAngle: {x: -80, y: 80}
 --- !u!114 &1363747321
 MonoBehaviour:
   m_ObjectHideFlags: 0
