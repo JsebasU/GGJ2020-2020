@@ -4,16 +4,20 @@ using UnityEngine;
 
 public class PoolObj : MonoBehaviour
 {
-    GameObject[] volcan;
-    [SerializeField] GameObject volcanPrefb;
-    GameObject[] meteorito;
-    [SerializeField] GameObject meteoritoPrefb;
-    GameObject[] radiacion;
-    [SerializeField] GameObject radiacionPrefb;
-    GameObject[] incendio;
-    [SerializeField] GameObject incendioPrefb;
-    GameObject[] pandemia;
-    [SerializeField] GameObject pandemiaPrefb;
+    GameObject[] volcan = new GameObject[0];
+    [SerializeField] GameObject volcanPrefb = null;
+
+    GameObject[] meteorito = new GameObject[0];
+    [SerializeField] GameObject meteoritoPrefb = null;
+
+    GameObject[] radiacion = new GameObject[0];
+    [SerializeField] GameObject radiacionPrefb = null;
+
+    GameObject[] incendio = new GameObject[0];
+    [SerializeField] GameObject incendioPrefb = null;
+
+    GameObject[] pandemia = new GameObject[0];
+    [SerializeField] GameObject pandemiaPrefb = null;
 
     private void Awake()
     {
