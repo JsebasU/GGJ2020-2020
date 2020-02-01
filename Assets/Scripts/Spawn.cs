@@ -9,25 +9,47 @@ public class Spawn : MonoBehaviour
     GameVariables.Desatres desatres = GameVariables.Desatres.Incendios;
     float timer;
     float chaosEvent;
-    
-    void Start()
+    private bool isActive;
+    private GameController _gameController;
+
+    public void SetGameController(GameController controller)
     {
-        chaosEvent = Random.Range(GameVariables.minTimeEvent, GameVariables.maxTimeEvent);
+        this._gameController = controller;
+    }
+    
+    public bool IsActive
+    {
+        get => isActive;
+        set => isActive = value;
+    }
+
+    void StartSpawn()
+    {
+        if (this.isActive)
+        {
+            this.isActive = true;
+            chaosEvent = Random.Range(GameVariables.minTimeEvent, GameVariables.maxTimeEvent);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
-        if (timer >= chaosEvent)
+        if (this.isActive)
         {
-            Start();
-            desatres = (GameVariables.Desatres)Random.Range(0, GameVariables.Desatres.GetNames(typeof(GameVariables.Desatres)).Length - 1);
-            Debug.Log(desatres);
-            cases();
-            timer = 0;
+            timer += Time.deltaTime;
+            if (timer >= chaosEvent)
+            {
+                chaosEvent = Random.Range(GameVariables.minTimeEvent, GameVariables.maxTimeEvent);
+                desatres = (GameVariables.Desatres) Random.Range(0,
+                    GameVariables.Desatres.GetNames(typeof(GameVariables.Desatres)).Length - 1);
+                Debug.Log(desatres);
+                cases();
+                timer = 0;
+            }
         }
     }
+
     void cases()
     {
         switch (desatres)
