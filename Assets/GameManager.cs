@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager manager = null;
     public Texture2D worldMaterial;
     public string playerName = "";
+    public int seed = 0;
     public int poblacion = 0;
     public float minTimeEvent = 5;
     public float maxTimeEvent = 10;

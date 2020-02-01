@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader Graphs_shder
+  m_Name: Shader Graphs_shder 1
   m_Shader: {fileID: -6465566751694194690, guid: ea197c36314bed0419bd7505396854e9,
     type: 3}
   m_ShaderKeywords: 
@@ -20,5 +20,8 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs: []
-    m_Floats: []
-    m_Colors: []
+    m_Floats:
+    - Vector1_A7B831DC: 0
+    - _Ruido: 3
+    m_Colors:
+    - Vector2_EF7543CA: {r: 0, g: 0.5, b: 0, a: 0}
