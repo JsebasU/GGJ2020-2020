@@ -13,6 +13,5 @@ public class GameVariables
     public static string CASA_PREFAB = "Prefabs/Casa";
 
     public enum Desatres { Meteorito, Volcan, Radiacion, Pandemia, Incendios};
-
-    //public static int 
+    public enum GameState {Menu, Game, Win, Lose};
 }
