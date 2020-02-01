@@ -13,3 +13,4 @@ public class playerSeed : MonoBehaviour
         GameManager.manager.seed = seed;
     }
 }
+

@@ -11,7 +11,7 @@ public class GameVariables
     public static string INCENDIO_PREFAB = "Prefabs/Incendios";
     public static string PANDEMIA_PREFAB = "Prefabs/Pandemia";
     public static string CASA_PREFAB = "Prefabs/Casa";
-    
+
     public enum Desatres { Meteorito, Volcan, Radiacion, Pandemia, Incendios};
 
     //public static int 
