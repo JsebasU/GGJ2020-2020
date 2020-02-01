@@ -21,7 +21,8 @@ Material:
     serializedVersion: 3
     m_TexEnvs: []
     m_Floats:
-    - Vector1_A7B831DC: 0
-    - _Ruido: 3
+    - Vector1_1843F3BB: 57
+    - Vector1_A7B831DC: 100
+    - _Ruido: 6
     m_Colors:
-    - Vector2_EF7543CA: {r: 0, g: 0.5, b: 0, a: 0}
+    - Vector2_EF7543CA: {r: 0.7, g: 1, b: 0, a: 0}
