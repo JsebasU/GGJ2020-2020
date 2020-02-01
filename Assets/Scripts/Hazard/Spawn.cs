@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class Spawn : MonoBehaviour
 {
-    public enum Desatres { Meteorito, Volcan, Radiacion, Pandemia, Incendios, length };
     public PoolObj pool; 
-    Desatres desatres = Desatres.Incendios;
+    GameVariables.Desatres desatres = GameVariables.Desatres.Incendios;
     float timer;
     float chaosEvent;
     // Start is called before the first frame update
@@ -26,7 +25,7 @@ public class Spawn : MonoBehaviour
         if (timer >= chaosEvent)
         {
             Start();
-            desatres = (Desatres)Random.Range(0, (int)Desatres.length - 1);
+            desatres = (GameVariables.Desatres)Random.Range(0, GameVariables.Desatres.GetNames(typeof(GameVariables.Desatres)).Length - 1);
             Debug.Log(desatres);
             cases();
             timer = 0;
@@ -36,7 +35,7 @@ public class Spawn : MonoBehaviour
     {
         switch (desatres)
         {
-            case Desatres.Meteorito:
+            case GameVariables.Desatres.Meteorito:
             {
                 Debug.Log("Meteorito");
 
@@ -64,28 +63,28 @@ public class Spawn : MonoBehaviour
                     met.SetActive(true);
                     break;
             }
-            case Desatres.Incendios:
+            case GameVariables.Desatres.Incendios:
             {
                 Debug.Log("Incendio");
 
                     mirarPlaneta(GameVariables.INCENDIO_PREFAB);
                     break;
             }
-            case Desatres.Pandemia:
+            case GameVariables.Desatres.Pandemia:
             {
                 Debug.Log("Pandemia");
 
                     mirarPlaneta(GameVariables.PANDEMIA_PREFAB);
                     break;
             }
-            case Desatres.Volcan:
+            case GameVariables.Desatres.Volcan:
             {
                 Debug.Log("Volcan");
 
                     mirarPlaneta(GameVariables.VOLCAN_PREFAB);
                     break;
             }
-            case Desatres.Radiacion:
+            case GameVariables.Desatres.Radiacion:
             {
                 Debug.Log("Radiacion");
 
@@ -93,8 +92,8 @@ public class Spawn : MonoBehaviour
                     break;
             }
         }
-       
     }
+    
     void mirarPlaneta(string name)
     {
         float Point = GetComponent<SphereCollider>().radius;
