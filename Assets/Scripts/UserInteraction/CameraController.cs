@@ -15,6 +15,7 @@ public class CameraController : MonoBehaviour, IDragHandler
     public float cameraZoomSpeed = 1f;
     public Vector2 cameraOrthoRange = Vector2.zero;
     public Vector2 cameraPerspRange = Vector2.zero;
+    public Vector2 cameraMaxAngle = Vector2.zero;
 
     private void Awake()
     {
@@ -27,7 +28,9 @@ public class CameraController : MonoBehaviour, IDragHandler
         switch (Input.touchCount)
         {
             case 1:
-                this.cameraAxis.transform.localEulerAngles += new Vector3(-eventData.delta.y, eventData.delta.x, 0f);
+                Vector2 cameraAngle = this.cameraAxis.transform.localEulerAngles;
+                this.cameraAxis.transform.eulerAngles = new Vector3( Mathf.Clamp((-eventData.delta.y + cameraAngle.x > 180) ? -eventData.delta.y + cameraAngle.x - 360 : -eventData.delta.y + cameraAngle.x, this.cameraMaxAngle.x, this.cameraMaxAngle.y), eventData.delta.x + cameraAngle.y, 0f);
+                Debug.Log("Rotation " + this.cameraAxis.transform.localEulerAngles);
                 break;
             default:
                 if (Input.touchCount == 2)
