@@ -27,10 +27,9 @@ public class CameraController : MonoBehaviour, IDragHandler
     {
         switch (Input.touchCount)
         {
-            case 1:
+            case 0:
                 Vector2 cameraAngle = this.cameraAxis.transform.localEulerAngles;
-                this.cameraAxis.transform.eulerAngles = new Vector3( Mathf.Clamp((-eventData.delta.y + cameraAngle.x > 180) ? -eventData.delta.y + cameraAngle.x - 360 : -eventData.delta.y + cameraAngle.x, this.cameraMaxAngle.x, this.cameraMaxAngle.y), eventData.delta.x + cameraAngle.y, 0f);
-                Debug.Log("Rotation " + this.cameraAxis.transform.localEulerAngles);
+                this.cameraAxis.transform.localEulerAngles = new Vector3( Mathf.Clamp((-eventData.delta.y + cameraAngle.x > 180) ? -eventData.delta.y + cameraAngle.x - 360 : -eventData.delta.y + cameraAngle.x, this.cameraMaxAngle.x, this.cameraMaxAngle.y), eventData.delta.x + cameraAngle.y, 0f);
                 break;
             default:
                 if (Input.touchCount == 2)
