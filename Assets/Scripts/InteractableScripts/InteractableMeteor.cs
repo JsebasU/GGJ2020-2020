@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class InteractableFire : InteractableBase
+public class InteractableMeteor : InteractableBase
 {
     [SerializeField] float secondsToClear = 0;
     [SerializeField] Slider temporizador;
-    [SerializeField] ParticleSystem Rain;
-    [SerializeField] ParticleSystem fire;
+    [SerializeField] Meteoro meteoro;
     bool alreadyCleared = false;
+
     private void OnEnable()
     {
         alreadyCleared = false;
@@ -24,7 +24,9 @@ public class InteractableFire : InteractableBase
 
     public override void OnStartInteraction()
     {
+        meteoro.velocity = 0;
         StartCoroutine(SimpleCompleteEvent());
+        
     }
 
     IEnumerator SimpleCompleteEvent()
@@ -35,9 +37,8 @@ public class InteractableFire : InteractableBase
             value += Time.deltaTime;
             temporizador.value = value;
             yield return null;
-            Rain.Play();
         }
-        fire.Stop();
+        meteoro.velocity = -5;
         alreadyCleared = true;
         yield return new WaitForSeconds(2);
         gameObject.SetActive(false);
@@ -45,8 +46,9 @@ public class InteractableFire : InteractableBase
 
     public override void OnCancelInteraction()
     {
-        if (alreadyCleared == false)
+        if(alreadyCleared == false)
         {
+            meteoro.velocity = 2;
             StopAllCoroutines();
         }
     }
