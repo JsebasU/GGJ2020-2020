@@ -8,111 +8,95 @@ using Random = UnityEngine.Random;
 
 public class PoolObj : MonoBehaviour
 {
-    [SerializeField] GameObject volcanPrefb;
-    [SerializeField] GameObject meteoritoPrefb = null;
-    [SerializeField] GameObject radiacionPrefb = null;
-    [SerializeField] GameObject incendioPrefb = null;
-    [SerializeField] GameObject pandemiaPrefb = null;
-
-    public Dictionary<string, GameObject> Pool = new Dictionary<string, GameObject>();
+    public Dictionary<string, Stack<GameObject>> Pool = new Dictionary<string,  Stack<GameObject>>();
     
     public int poolSize = 5;
+    public int poolExtraSize = 3;
 
     private void Start()
     {
-        CreatePool(volcanPrefb, poolSize);
-        CreatePool(meteoritoPrefb, poolSize);
-        CreatePool(radiacionPrefb, poolSize);
-        CreatePool(incendioPrefb, poolSize);
-        CreatePool(pandemiaPrefb, poolSize);
+        Debug.Log("Starting Pool");
+        CreatePool(GameVariables.VOLCAN_PREFAB, poolSize);
+        CreatePool(GameVariables.METEORITO_PREFAB, poolSize);
+        CreatePool(GameVariables.RADIACION_PREFAB, poolSize);
+        CreatePool(GameVariables.INCENDIO_PREFAB, poolSize);
+        //CreatePool((GameObject) Resources.Load(GameVariables.PANDEMIA_PREFAB), poolSize);
     }
-
-    void CreatePool(GameObject prefab, int size)
+    
+    void CreatePool(string prefabPath, int size)
     {
+        Debug.Log("Creating Pool");
+        GameObject newGameObject = (GameObject) Resources.Load(prefabPath);
+        Stack<GameObject> newStack = new Stack<GameObject>();
         for (int i = 0; i < size; i++)
         {
-            Pool.Add(prefab.name + i, Instantiate(prefab, this.transform));
+            GameObject newObject = Instantiate(newGameObject, this.transform);
+            newObject.name.Replace("(Clone)", "");
+            newStack.Push(newObject);
+        }
+        Pool.Add(prefabPath, newStack);
+        Debug.Log("Pool Created " + prefabPath);
+    }
+
+    public void IncreasePoolSize(string poolName, int newSize)
+    {
+        if (Pool.ContainsKey(poolName))
+        {
+            Stack<GameObject> stack;
+            Pool.TryGetValue(poolName, out stack);
+            for (int i = 0; i < newSize; i++)
+            {
+                GameObject newObject = Instantiate((GameObject) Resources.Load(poolName), this.transform);
+                newObject.name.Replace("(Clone)", "");
+                stack.Push(newObject);
+            }
+            Debug.Log("Increased the poolsize correctly!");
         }
     }
 
-    public GameObject GetFromPool(string name)
+    public GameObject GetObject(string name)
     {
+        Start:
+        Debug.Log("Getting Object");
         if (Pool.ContainsKey(name))
         {
-            GameObject newObject;
+            Stack<GameObject> newObject;
             Pool.TryGetValue(name, out newObject);
-            return newObject;
+            if (newObject.Count < 1)
+            {
+                IncreasePoolSize(name, poolExtraSize);
+                goto Start;
+            }
+            return newObject.Pop();
         }
         return null;
     }
-    
-    /*
-    /// <summary>
-    /// Obtiene un objeto del pool de objetos usando un numero/index para obtener de diferente tipo de pools
-    /// </summary>
-    /// <param name="prefab">
-    /// index para seleccionar de que pool se tomara el objeto
-    /// 0 = volcan.
-    /// 1 = meteorito.
-    /// 2 = radiacion.
-    /// 3 = incendio.
-    /// 4 = pandemia.
-    /// </param>
-    /// <returns></returns>
-    
-    public GameObject GetObj(int prefab)
-    {
-        GameObject returnValue = null;
-        switch (prefab)
-        {
-            case 0:
-                returnValue = volcan[0];
-                UpdatePoolPositions(volcan);
-                break;
-            case 1:
-                returnValue = meteorito[0];
-                UpdatePoolPositions(meteorito);
-                break;
-            case 2:
-                returnValue = radiacion[0];
-                UpdatePoolPositions(radiacion);
-                break;
-            case 3:
-                returnValue = incendio[0];
-                UpdatePoolPositions(incendio);
-                break;
-            case 4:
-                returnValue = pandemia[0];
-                UpdatePoolPositions(pandemia);
-                break;
-            default:
-                Debug.LogError("GetObj out of range");
-                break;
-        }
-        return returnValue;
-    }
 
-    void UpdatePoolPositions(GameObject[]pool)
+    public void ReleaseObject(GameObject usedObject)
     {
-        GameObject fstPos = pool[0];
-        for(int i = 0; i < pool.Length; i++)
+        Debug.Log("Releasing Object");
+        if (Pool.ContainsKey(usedObject.name))
         {
-            if(i+1 == pool.Length)
-            {
-                pool[i] = fstPos;
-            }
+            Stack<GameObject> newObject;
+            Pool.TryGetValue(name, out newObject);
+            if(newObject != null)
+                newObject.Push(usedObject);
             else
-            {
-                pool[i] = pool[i + 1];
-            }
+                Debug.Log("No pool found for this object, ??");
+        }
+        else
+        {
+            Debug.Log("WTF!, this object isn't poolable");
         }
     }
-    */
+    
     public void invoke(string name)
     {
+        Debug.Log("Request object");
         if (Pool.ContainsKey(name))
         {
-            GameObject x = GetFromPool(name);
+            GameObject x = GetObject(name);
+            Debug.Log("Request object " + x);
             x.transform.position = new Vector3(Random.Range(-10, 10), Random.Range(-10, 10), Random.Range(-10, 10));
         }
     }
