@@ -21,6 +21,10 @@
             <e p="meteoro.cs" t="Include" />
             <e p="Spawn.cs" t="Include" />
           </e>
+          <e p="InteractableScripts" t="Include">
+            <e p="InteractableBase.cs" t="Include" />
+            <e p="InteractableHold.cs" t="Include" />
+          </e>
           <e p="UserInteraction" t="Include">
             <e p="CameraController.cs" t="Include" />
             <e p="ControlDisaster.cs" t="Include" />
