@@ -5222,6 +5222,7 @@ GameObject:
   - component: {fileID: 8283510235514640480}
   - component: {fileID: 8555123867014028030}
   - component: {fileID: 3130718791148628913}
+  - component: {fileID: 349369049745581034}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -5309,6 +5310,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &349369049745581034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8386651888194566277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c27122876bf4a5c4788096dcee39a9b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9030666393370153364
 GameObject:
   m_ObjectHideFlags: 0
@@ -5442,7 +5455,6 @@ MonoBehaviour:
   secondsToClear: 0
   temporizador: {fileID: 4258681866168708149}
   meteoro: {fileID: 7762905283804102083}
-  explosion: {fileID: 2241542317776796336}
 --- !u!65 &7305625743189384438
 BoxCollider:
   m_ObjectHideFlags: 0
