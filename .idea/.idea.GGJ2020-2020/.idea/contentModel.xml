@@ -31,6 +31,7 @@
             <e p="CameraController.cs" t="Include" />
             <e p="ControlDisaster.cs" t="Include" />
             <e p="HUDController.cs" t="Include" />
+            <e p="PushButton.cs" t="Include" />
           </e>
         </e>
       </e>

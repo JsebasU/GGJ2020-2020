@@ -70,6 +70,10 @@ public class GameController : MonoBehaviour
 
     public void Menu(bool pause = false)
     {
+        if (pause)
+        {
+            Time.timeScale = Time.timeScale != 0 ? 0 : 1;
+        }
         
     }
 
