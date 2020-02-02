@@ -5,6 +5,7 @@ using UnityEngine;
 public class Meteoro : MonoBehaviour
 {
     Rigidbody rb;
+    [SerializeField] ParticleSystem particula;
     public float velocity = 2;
     // Start is called before the first frame update
     void Start()
@@ -18,8 +19,14 @@ public class Meteoro : MonoBehaviour
         if(other.gameObject.tag == "Ground")
         {
             FindObjectOfType<GameController>().KillPopulation((int)(FindObjectOfType<GameController>().actualPopulation*25)/100);
-            gameObject.SetActive(false);
+            StartCoroutine(Delay());
         }
         
+    }
+    IEnumerator Delay()
+    {
+        particula.Play();
+        yield return new WaitForSeconds(3);
+        gameObject.SetActive(false);
     }
 }
