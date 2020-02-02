@@ -41,7 +41,7 @@ public class CameraController : MonoBehaviour, IDragHandler
         {
             switch (Input.touchCount)
             {
-                case 0:
+                case 1:
                     Vector2 cameraAngle = this.cameraAxis.transform.localEulerAngles;
                     this.cameraAxis.transform.localEulerAngles = new Vector3(
                         Mathf.Clamp(
@@ -51,7 +51,7 @@ public class CameraController : MonoBehaviour, IDragHandler
                         eventData.delta.x + cameraAngle.y, 0f);
                     break;
                 default:
-                    if (Input.touchCount == 2)
+                    if (Input.touchCount >= 2)
                     {
                         Touch touchZero = Input.GetTouch(0);
                         Touch touchOne = Input.GetTouch(1);

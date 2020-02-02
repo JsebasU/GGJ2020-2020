@@ -16,7 +16,10 @@
           </e>
           <e p="InteractableScripts" t="Include">
             <e p="InteractableBase.cs" t="Include" />
+            <e p="InteractableFire.cs" t="Include" />
             <e p="InteractableHold.cs" t="Include" />
+            <e p="InteractableMeteor.cs" t="Include" />
+            <e p="InteractableVolcan.cs" t="Include" />
           </e>
           <e p="LoadingScene.cs" t="Include" />
           <e p="playerSeed.cs" t="Include" />
