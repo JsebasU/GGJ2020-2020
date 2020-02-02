@@ -9,7 +9,7 @@ public class HUDController : MonoBehaviour
     public Image populationSlider;
     public Text populationCounter;
     public TMP_InputField playerName;
-    
+    public GameObject gameOver;
     // UI menu
     public GameObject menuView;
     

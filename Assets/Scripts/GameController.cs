@@ -5,6 +5,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -128,14 +129,22 @@ public class GameController : MonoBehaviour
                 this.maxPopulation = Mathf.Max(this.actualPopulation, this.maxPopulation);
                 HudController.SetPopulationScale(this.actualPopulation,this.maxPopulation);
                 if (this.actualPopulation <= 0)
+                {
                     gameState = GameVariables.GameState.Lose;
+                }
                 break;
             case GameVariables.GameState.Lose:
-                Menu();
+                //Menu();
+                if(!HudController.gameOver.activeSelf)
+                HudController.gameOver.SetActive(true);
+                Time.timeScale = 0;
                 break;
         }
     }
-
+    public void ResetGame()
+    {
+        SceneManager.LoadScene(0);
+    }
     public void KillPopulation(int killedPopulation)
     {
         this.actualPopulation -= killedPopulation;
