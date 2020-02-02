@@ -11,6 +11,7 @@ public class Spawn : MonoBehaviour
     private bool isActive;
     private GameController _gameController;
     [SerializeField] Transform center;
+    private int disasterCounter = 0;
     
     public void SetGameController(GameController controller)
     {
@@ -28,7 +29,7 @@ public class Spawn : MonoBehaviour
         if (this.isActive)
         {
             this.isActive = true;
-            chaosEvent = Random.Range(GameVariables.minTimeEvent, GameVariables.maxTimeEvent);
+            chaosEvent = Random.Range( Mathf.Max(GameVariables.minTimeEvent - this.disasterCounter,  GameVariables.minEventValue), Mathf.Max(GameVariables.maxTimeEvent - this.disasterCounter, 4));
         }
     }
 
