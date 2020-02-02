@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 1548827667820392850}
   - component: {fileID: 4343343497689706228}
   - component: {fileID: 5514652425935877258}
-  - component: {fileID: 4402342281978109675}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -100,18 +99,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &4402342281978109675
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 527933462664316692}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c27122876bf4a5c4788096dcee39a9b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2475032666320062506
 GameObject:
   m_ObjectHideFlags: 0
@@ -5087,7 +5074,6 @@ GameObject:
   - component: {fileID: 1053828684485501999}
   - component: {fileID: 7437325156802050979}
   - component: {fileID: 2571855907341834327}
-  - component: {fileID: 1766518126097617008}
   m_Layer: 0
   m_Name: Image
   m_TagString: Untagged
@@ -5151,25 +5137,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!95 &1766518126097617008
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3342858050322479326}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 99ecfc36e3a8e4a4fb11b71d0d6aad44, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1333820132614526526
 PrefabInstance:
   m_ObjectHideFlags: 0

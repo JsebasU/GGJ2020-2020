@@ -140,7 +140,6 @@ GameObject:
   - component: {fileID: 7766559639619515806}
   - component: {fileID: 8113448844479273533}
   - component: {fileID: 2268203157079282805}
-  - component: {fileID: 5803672128956302128}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -228,18 +227,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &5803672128956302128
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2403188027688974657}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c27122876bf4a5c4788096dcee39a9b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5914868995616137534
 GameObject:
   m_ObjectHideFlags: 0
@@ -251,7 +238,6 @@ GameObject:
   - component: {fileID: 6888590348937362123}
   - component: {fileID: 3693243020143799730}
   - component: {fileID: 1932314812722874790}
-  - component: {fileID: 1879104022298998058}
   m_Layer: 0
   m_Name: Image
   m_TagString: Untagged
@@ -315,25 +301,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!95 &1879104022298998058
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5914868995616137534}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 99ecfc36e3a8e4a4fb11b71d0d6aad44, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6004521625249341638
 GameObject:
   m_ObjectHideFlags: 0
@@ -10065,7 +10032,7 @@ Transform:
   m_GameObject: {fileID: 8988751177943868887}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
   m_LocalPosition: {x: 0, y: -0.07198983, z: 0}
-  m_LocalScale: {x: 0.05048533, y: 0.05048533, z: 0.05048533}
+  m_LocalScale: {x: 0.006310665, y: 0.006310665, z: 0.002524267}
   m_Children:
   - {fileID: 7496482222552669559}
   - {fileID: 4598197958861791048}

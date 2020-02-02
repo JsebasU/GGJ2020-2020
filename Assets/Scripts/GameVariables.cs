@@ -22,8 +22,8 @@ public class GameVariables
 
     public static float minEventValue = 1f;
     
-    public static int PopulationIncrem = 1;
-    public static int InitialPopulation = 10;
+    public static int PopulationIncrem = 10;
+    public static int InitialPopulation = 1000;
     
     public static Quaternion CameraInitialPosition = Quaternion.identity;
     public static float CameraInitialScale = 2f;
