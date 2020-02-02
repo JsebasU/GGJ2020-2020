@@ -12,15 +12,8 @@ public class Spawn : MonoBehaviour
     private GameController _gameController;
     [SerializeField] Transform center;
 
-    private void Awake()
+    private void Start()
     {
-        GameObject met = pool.GetObject(GameVariables.VOLCAN_PREFAB);
-        met.SetActive(true);
-        met.transform.SetParent(center);
-        met.transform.localPosition = new Vector3(0, 0, 1);
-        center.rotation = Quaternion.Euler(Random.Range(-180, 180), Random.Range(-180, 180), Random.Range(-180, 180));
-        met.transform.SetParent(null);
-        met.SetActive(true);
     }
 
     public void SetGameController(GameController controller)
@@ -67,29 +60,13 @@ public class Spawn : MonoBehaviour
         {
             case GameVariables.Desatres.Meteorito:
             {
-                Debug.Log("Meteorito");
 
-                float Point = 0;
-
-                    float usedRadius = 0;
-
-                    float x = Random.Range(-Point, Point);
-                    usedRadius += Mathf.Abs(x);
-                    float y = Random.Range(-(Point-usedRadius), Point - usedRadius);
-                    usedRadius += Mathf.Abs(y);
-                    int dir = Random.Range(0, 2);
-                    float z;
-                    if(dir == 0)
-                    {
-                        z = -(Point - usedRadius);
-                    }
-                    else
-                    {
-                        z = Point - usedRadius;
-                    }
                     GameObject met = pool.GetObject(GameVariables.METEORITO_PREFAB);
-                    met.transform.position = new Vector3(x * (Random.Range(10, 30)), y * (Random.Range(10, 30)), z * (Random.Range(10, 30)));
-                    met.transform.SetParent(gameObject.transform);
+                    met.SetActive(true);
+                    met.transform.SetParent(center);
+                    met.transform.localPosition = new Vector3(0, 0, 10);
+                    center.rotation = Quaternion.Euler(Random.Range(-180, 180), Random.Range(-180, 180), Random.Range(-180, 180));
+                    met.transform.SetParent(null);
                     met.SetActive(true);
                     break;
             }
@@ -126,29 +103,13 @@ public class Spawn : MonoBehaviour
     
     void mirarPlaneta(string name)
     {
-        float Point = 0;
 
-        float usedRadius = 0;
-
-        float x = Random.Range(-Point, Point);
-        usedRadius += Mathf.Abs(x);
-        float y = Random.Range(-(Point - usedRadius), Point - usedRadius);
-        usedRadius += Mathf.Abs(y);
-        int dir = Random.Range(0, 2);
-        float z;
-        if (dir == 0)
-        {
-            z = -(Point - usedRadius);
-        }
-        else
-        {
-            z = Point - usedRadius;
-        }
-        
         GameObject met = pool.GetObject(name);
-        met.transform.position = new Vector3(x+ ((transform.localScale.x /1.8f)), y + (((transform.localScale.x / 1.8f))), z + (((transform.localScale.x / 1.8f))));
-        met.transform.LookAt(2 * met.transform.position - transform.position);
-        met.transform.SetParent(gameObject.transform);
+        met.transform.SetParent(center);
+        met.transform.localPosition = new Vector3(0, 0, 1);
+        center.rotation = Quaternion.Euler(Random.Range(-180, 180), Random.Range(-180, 180), Random.Range(-180, 180));
+        met.transform.SetParent(null);
+        met.transform.right = -Vector3.zero;
         met.SetActive(true);
     }
 }

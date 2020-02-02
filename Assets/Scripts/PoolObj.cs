@@ -13,7 +13,7 @@ public class PoolObj : MonoBehaviour
     public int poolSize = 5;
     public int poolExtraSize = 3;
 
-    private void Start()
+    private void Awake()
     {
         Debug.Log("Starting Pool");
         CreatePool(GameVariables.VOLCAN_PREFAB, poolSize);
