@@ -17,8 +17,8 @@ public class WorldScript : MonoBehaviour
 
     public void changeSeed(string name)
     {
-        byte[] arr = System.Text.Encoding.ASCII.GetBytes(name);
-        int seed = BitConverter.ToInt32(arr, 0) / 1000;
+
+        int seed = name.GetHashCode() % 1000;
         Debug.Log("Sum " + seed);
         GameVariables.seed = seed;
         material.SetInt("_seed", GameVariables.seed);
