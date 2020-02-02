@@ -135,7 +135,7 @@ public class Spawn : MonoBehaviour
         }
         
         GameObject met = pool.GetObject(name);
-        met.transform.position = new Vector3(x, y, z);
+        met.transform.position = new Vector3(x+ ((transform.localScale.x /1.8f)), y + (((transform.localScale.x / 1.8f))), z + (((transform.localScale.x / 1.8f))));
         met.transform.LookAt(2 * met.transform.position - transform.position);
         met.transform.SetParent(gameObject.transform);
         met.SetActive(true);

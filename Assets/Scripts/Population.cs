@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Population : MonoBehaviour
 {
-    int poblacion = 10;
+    int poblacion = 1000;
     public PoolObj pool;
     void Update()
     {
