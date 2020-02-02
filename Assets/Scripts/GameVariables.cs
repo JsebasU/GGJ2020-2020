@@ -36,4 +36,6 @@ public class GameVariables
     public static float MoonSpeed = 10f;
     public static float CowSpeed = 10f;
     public static float UfoSpeed = 10f;
+
+    public static float CameraSensitivity = 2;
 }

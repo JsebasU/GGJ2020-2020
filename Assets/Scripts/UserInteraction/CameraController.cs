@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SocialPlatforms;
 
-public class CameraController : MonoBehaviour, IDragHandler, IPointerDownHandler
+public class CameraController : MonoBehaviour, IDragHandler, IPointerDownHandler, IPointerUpHandler
 {
     private Camera mainCamera;
     private Transform cameraAxis;
@@ -19,7 +19,8 @@ public class CameraController : MonoBehaviour, IDragHandler, IPointerDownHandler
     public Vector2 cameraMaxAngle = Vector2.zero;
 
     private GameController _gameController;
-
+    private Vector2 lastDelta = Vector2.zero;
+    
     public void SetGameController(GameController controller)
     {
         this._gameController = controller;
@@ -45,6 +46,7 @@ public class CameraController : MonoBehaviour, IDragHandler, IPointerDownHandler
             {
                 case 0:
                 case 1:
+                    eventData.delta /= GameVariables.CameraSensitivity;
                     Vector2 cameraAngle = this.cameraAxis.transform.localEulerAngles;
                     this.cameraAxis.transform.localEulerAngles = new Vector3(
                         Mathf.Clamp(
@@ -52,7 +54,7 @@ public class CameraController : MonoBehaviour, IDragHandler, IPointerDownHandler
                                 ? -eventData.delta.y + cameraAngle.x - 360
                                 : -eventData.delta.y + cameraAngle.x, this.cameraMaxAngle.x, this.cameraMaxAngle.y),
                         eventData.delta.x + cameraAngle.y, 0f);
-                    this.axisRigidbody.AddTorque(new Vector3(eventData.delta.y, eventData.delta.x));
+                    this.lastDelta = eventData.delta;
                     break;
                 default:
                     if (Input.touchCount >= 2)
@@ -96,7 +98,13 @@ public class CameraController : MonoBehaviour, IDragHandler, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        this.lastDelta = Vector2.zero;
         this.axisRigidbody.velocity = Vector3.zero;
         this.axisRigidbody.angularVelocity = Vector3.zero;
+    }
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        this.axisRigidbody.AddTorque(new Vector3(eventData.delta.y, eventData.delta.x));
     }
 }

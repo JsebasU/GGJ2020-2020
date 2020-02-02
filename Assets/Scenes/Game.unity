@@ -1183,7 +1183,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: e03522819f7441e44ae5eef878d798c7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1850,6 +1850,9 @@ MonoBehaviour:
   easyClip: {fileID: 8300000, guid: 28078603827c5c346b33d11ab1197218, type: 3}
   midClip: {fileID: 8300000, guid: b49715d3e2f860442954024834aedcc3, type: 3}
   hardClip: {fileID: 8300000, guid: d341fe19e03328a4295d63e67bb23c08, type: 3}
+  easyRange: {x: 0.6, y: 1}
+  midRange: {x: 0.35, y: 0.75}
+  hardRange: {x: 0, y: 0.4}
 --- !u!4 &1173759317
 Transform:
   m_ObjectHideFlags: 0

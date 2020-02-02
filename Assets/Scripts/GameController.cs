@@ -129,7 +129,9 @@ public class GameController : MonoBehaviour
                 HudController.SetPopulationScale(this.actualPopulation,this.maxPopulation);
                 if (this.actualPopulation <= 0)
                     gameState = GameVariables.GameState.Lose;
-                
+                break;
+            case GameVariables.GameState.Lose:
+                Menu();
                 break;
         }
     }
