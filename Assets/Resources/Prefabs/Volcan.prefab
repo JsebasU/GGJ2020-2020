@@ -156,10 +156,11 @@ GameObject:
   - component: {fileID: 5891712321280523809}
   - component: {fileID: 8434992208231381785}
   - component: {fileID: 4717144787735293297}
+  - component: {fileID: 7332707560944390429}
   - component: {fileID: 4855413059815209248}
   m_Layer: 0
   m_Name: Volcan
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -226,6 +227,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &7332707560944390429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2781150839319602386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02f9de7d0c1501341a95de15b513e490, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  secondsToClear: 0
+  temporizador: {fileID: 4097907391324120476}
 --- !u!65 &4855413059815209248
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -237,8 +252,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.017717645, y: 0.017717646, z: 0.015784444}
-  m_Center: {x: 0.00003520446, y: -0.00006586825, z: 0.0070501547}
+  m_Size: {x: 0.02872588, y: 0.028725883, z: 0.021941144}
+  m_Center: {x: 0, y: 5.92119e-17, z: 0.0053308704}
 --- !u!1 &3346487084318082549
 GameObject:
   m_ObjectHideFlags: 0
