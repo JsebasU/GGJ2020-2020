@@ -18,6 +18,7 @@ public class GameVariables
     
     public static float minTimeEvent = 5;
     public static float maxTimeEvent = 10;
+    public static float gameTime = 120;
 
     public static int PopulationIncrem = 10;
     public static int InitialPopulation = 10;

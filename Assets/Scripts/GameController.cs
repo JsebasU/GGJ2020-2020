@@ -18,7 +18,8 @@ public class GameController : MonoBehaviour
 
     private float actualPopulation = 0f;
     private float maxPopulation = 0f;
-
+    private float gameTime;
+    
     public GameVariables.GameState GetGameState()
     {
         return this.gameState;
@@ -46,6 +47,8 @@ public class GameController : MonoBehaviour
 
     private IEnumerator StartGameAnimation()
     {
+        this.gameTime = GameVariables.gameTime;
+        this.HudController.SetTimer(this.gameTime);
         Transform CameraAxis = this.CameraController.GetCameraAxis();
         Quaternion initialRotation = CameraAxis.localRotation;
         float initialSize = Camera.main.orthographicSize;
@@ -88,9 +91,20 @@ public class GameController : MonoBehaviour
                 {
                     this.actualPopulation -= disasterCount[i] * GameVariables.DesastresMultp[i];
                 }
+                this.gameTime -= Time.deltaTime;
+                this.HudController.SetTimer(this.gameTime);
                 this.maxPopulation = Mathf.Max(this.actualPopulation, this.maxPopulation);
                 HudController.SetPopulationScale(this.actualPopulation,this.maxPopulation);
+                if (this.actualPopulation <= 0)
+                    gameState = GameVariables.GameState.Lose;
+                
                 break;
         }
+    }
+
+    public void KillPopulation(int killedPopulation)
+    {
+        this.actualPopulation -= killedPopulation;
+        this.actualPopulation = Mathf.Max(this.actualPopulation, 0);
     }
 }
