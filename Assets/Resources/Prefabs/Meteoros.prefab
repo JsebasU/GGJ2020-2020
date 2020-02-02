@@ -5295,7 +5295,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particula: {fileID: 7914320101901131854}
-  velocity: 2
+  velocity: 0.03
 --- !u!114 &5358815429333487821
 MonoBehaviour:
   m_ObjectHideFlags: 0
