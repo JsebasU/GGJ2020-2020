@@ -48,7 +48,7 @@ public class InteractableMeteor : InteractableBase
     {
         if(alreadyCleared == false)
         {
-            meteoro.velocity = 2;
+            meteoro.velocity = 0.03f;
             StopAllCoroutines();
         }
     }

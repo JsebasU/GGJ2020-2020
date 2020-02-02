@@ -5294,7 +5294,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1f15699feaa5c948ac60a1fc067401a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: 2
+  particula: {fileID: 7914320101901131854}
+  velocity: 0.03
 --- !u!114 &5358815429333487821
 MonoBehaviour:
   m_ObjectHideFlags: 0
