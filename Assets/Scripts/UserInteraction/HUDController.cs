@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class HUDController : MonoBehaviour
 {
-    public Transform populationSlider;
+    public Image populationSlider;
     public Text populationCounter;
     
     private GameController _gameController;
@@ -18,6 +18,6 @@ public class HUDController : MonoBehaviour
     public void SetPopulationScale(float actualPop, float maxPop)
     {
         populationCounter.text = actualPop.ToString();
-        populationSlider.localScale = new Vector3(actualPop / maxPop, 1f, 1f);
+        populationSlider.fillAmount = actualPop / maxPop;
     }
 }
