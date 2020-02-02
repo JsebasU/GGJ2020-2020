@@ -41,6 +41,7 @@ public class CameraController : MonoBehaviour, IDragHandler
         {
             switch (Input.touchCount)
             {
+                case 0:
                 case 1:
                     Vector2 cameraAngle = this.cameraAxis.transform.localEulerAngles;
                     this.cameraAxis.transform.localEulerAngles = new Vector3(

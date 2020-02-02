@@ -27,6 +27,12 @@ public class GameController : MonoBehaviour
     
     private void Start()
     {
+        if (this.Spawn == null)
+            this.Spawn = FindObjectOfType<Spawn>();
+        if (this.HudController == null)
+            this.HudController = FindObjectOfType<HUDController>();
+        if (this.CameraController == null)
+            this.CameraController = FindObjectOfType<CameraController>();
         this.disasterCount = new int[GameVariables.Desatres.GetNames(typeof(GameVariables.Desatres)).Length];
         this.HudController.SetGameController(this);
         this.CameraController.SetGameController(this);
