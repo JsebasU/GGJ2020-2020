@@ -11,11 +11,6 @@ public class Meteoro : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         transform.LookAt(Vector3.zero);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
         rb.velocity = transform.forward * velocity; 
     }
     private void OnTriggerEnter(Collider other)

@@ -20,4 +20,9 @@ public class HUDController : MonoBehaviour
         populationCounter.text = actualPop.ToString();
         populationSlider.fillAmount = actualPop / maxPop;
     }
+
+    public void SetTimer(float time)
+    {
+        
+    }
 }
