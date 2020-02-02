@@ -26,7 +26,6 @@ public class PoolObj : MonoBehaviour
     
     void CreatePool(string prefabPath, int size)
     {
-        Debug.Log("Creating Pool");
         GameObject newGameObject = (GameObject) Resources.Load(prefabPath);
         Stack<GameObject> newStack = new Stack<GameObject>();
         for (int i = 0; i < size; i++)
@@ -37,7 +36,6 @@ public class PoolObj : MonoBehaviour
             newStack.Push(newObject);
         }
         Pool.Add(prefabPath, newStack);
-        Debug.Log("Pool Created " + prefabPath);
     }
 
     public void IncreasePoolSize(string poolName, int newSize)
@@ -53,14 +51,12 @@ public class PoolObj : MonoBehaviour
                 newObject.name.Replace("(Clone)", "");
                 stack.Push(newObject);
             }
-            Debug.Log("Increased the poolsize correctly!");
         }
     }
 
     public GameObject GetObject(string name)
     {
         Start:
-        Debug.Log("Getting Object");
         if (Pool.ContainsKey(name))
         {
             Stack<GameObject> newObject;

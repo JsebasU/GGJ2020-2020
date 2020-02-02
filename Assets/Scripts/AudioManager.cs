@@ -84,7 +84,7 @@ public class AudioManager : MonoBehaviour
 
     }
 
-    private void Awake()
+    private void Awakes()
     {
         if (manager == null)
         {

@@ -13,8 +13,15 @@ public class GameVariables
     public static string CASA_PREFAB = "Prefabs/Casa";
 
     public enum Desatres { Meteorito, Volcan, Radiacion, Pandemia, Incendios};
-    public enum GameState {Menu, Game, Win, Lose};
+    public static List<int> DesastresMultp = new List<int> {1,1,1,1,1};
+    public enum GameState {Menu, Game, Win, Lose, Halt};
     
     public static float minTimeEvent = 5;
     public static float maxTimeEvent = 10;
+
+    public static int PopulationIncrem = 10;
+    public static int InitialPopulation = 10;
+    
+    public static Quaternion CameraInitialPosition = Quaternion.identity;
+    public static float CameraInitialScale = 2f;
 }

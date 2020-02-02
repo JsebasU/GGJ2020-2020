@@ -17,6 +17,18 @@ public class CameraController : MonoBehaviour, IDragHandler
     public Vector2 cameraPerspRange = Vector2.zero;
     public Vector2 cameraMaxAngle = Vector2.zero;
 
+    private GameController _gameController;
+
+    public void SetGameController(GameController controller)
+    {
+        this._gameController = controller;
+    }
+
+    public Transform GetCameraAxis()
+    {
+        return this.cameraAxis;
+    }
+    
     private void Awake()
     {
         this.mainCamera = Camera.main;
@@ -25,46 +37,56 @@ public class CameraController : MonoBehaviour, IDragHandler
 
     public void OnDrag(PointerEventData eventData)
     {
-        switch (Input.touchCount)
+        if (this._gameController.GetGameState() != GameVariables.GameState.Halt)
         {
-            case 0:
-                Vector2 cameraAngle = this.cameraAxis.transform.localEulerAngles;
-                this.cameraAxis.transform.localEulerAngles = new Vector3( Mathf.Clamp((-eventData.delta.y + cameraAngle.x > 180) ? -eventData.delta.y + cameraAngle.x - 360 : -eventData.delta.y + cameraAngle.x, this.cameraMaxAngle.x, this.cameraMaxAngle.y), eventData.delta.x + cameraAngle.y, 0f);
-                break;
-            default:
-                if (Input.touchCount == 2)
-                {
-                    Touch touchZero = Input.GetTouch(0);
-                    Touch touchOne = Input.GetTouch(1);
-
-                    Vector2 touchZeroPrevPos = touchZero.position - touchZero.deltaPosition;
-                    Vector2 touchOnePrevPos = touchOne.position - touchOne.deltaPosition;
-
-                    float prevTouchDeltaMag = (touchZeroPrevPos - touchOnePrevPos).magnitude;
-                    float touchDeltaMag = (touchZero.position - touchOne.position).magnitude;
-
-                    float deltaMagnitudeDiff = prevTouchDeltaMag - touchDeltaMag;
-
-                    if (mainCamera.orthographic)
+            switch (Input.touchCount)
+            {
+                case 0:
+                    Vector2 cameraAngle = this.cameraAxis.transform.localEulerAngles;
+                    this.cameraAxis.transform.localEulerAngles = new Vector3(
+                        Mathf.Clamp(
+                            (-eventData.delta.y + cameraAngle.x > 180)
+                                ? -eventData.delta.y + cameraAngle.x - 360
+                                : -eventData.delta.y + cameraAngle.x, this.cameraMaxAngle.x, this.cameraMaxAngle.y),
+                        eventData.delta.x + cameraAngle.y, 0f);
+                    break;
+                default:
+                    if (Input.touchCount == 2)
                     {
-                        mainCamera.orthographicSize += deltaMagnitudeDiff * cameraZoomSpeed;
+                        Touch touchZero = Input.GetTouch(0);
+                        Touch touchOne = Input.GetTouch(1);
 
-                        mainCamera.orthographicSize = Mathf.Clamp(mainCamera.orthographicSize, this.cameraOrthoRange.x,
-                            this.cameraOrthoRange.y);
+                        Vector2 touchZeroPrevPos = touchZero.position - touchZero.deltaPosition;
+                        Vector2 touchOnePrevPos = touchOne.position - touchOne.deltaPosition;
+
+                        float prevTouchDeltaMag = (touchZeroPrevPos - touchOnePrevPos).magnitude;
+                        float touchDeltaMag = (touchZero.position - touchOne.position).magnitude;
+
+                        float deltaMagnitudeDiff = prevTouchDeltaMag - touchDeltaMag;
+
+                        if (mainCamera.orthographic)
+                        {
+                            mainCamera.orthographicSize += deltaMagnitudeDiff * cameraZoomSpeed;
+
+                            mainCamera.orthographicSize = Mathf.Clamp(mainCamera.orthographicSize,
+                                this.cameraOrthoRange.x,
+                                this.cameraOrthoRange.y);
+                        }
+                        else
+                        {
+                            mainCamera.fieldOfView += deltaMagnitudeDiff * cameraZoomSpeed;
+
+                            mainCamera.fieldOfView = Mathf.Clamp(mainCamera.fieldOfView, this.cameraPerspRange.x,
+                                this.cameraPerspRange.y);
+                        }
                     }
                     else
                     {
-                        mainCamera.fieldOfView += deltaMagnitudeDiff * cameraZoomSpeed;
-
-                        mainCamera.fieldOfView = Mathf.Clamp(mainCamera.fieldOfView, this.cameraPerspRange.x,
-                            this.cameraPerspRange.y);
+                        Debug.Log("Don't let that octopus play!");
                     }
-                }
-                else
-                {
-                    Debug.Log("Don't let that octopus play!");
-                }
-                break;
+
+                    break;
+            }
         }
     }
 }
