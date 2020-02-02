@@ -14,8 +14,8 @@ public class Spawn : MonoBehaviour
 
     private void Awake()
     {
-        GameObject met = new GameObject();
-        met.SetActive(false);
+        GameObject met = pool.GetObject(GameVariables.VOLCAN_PREFAB);
+        met.SetActive(true);
         met.transform.SetParent(center);
         met.transform.localPosition = new Vector3(0, 0, 1);
         center.rotation = Quaternion.Euler(Random.Range(-180, 180), Random.Range(-180, 180), Random.Range(-180, 180));
