@@ -15,14 +15,9 @@ public class Meteoro : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(gameObject.tag == "Ocean")
+        if(gameObject.tag == "Ground")
         {
-            GameManager.manager.poblacion = GameManager.manager.poblacion - ((GameManager.manager.poblacion * Random.Range(10, 15)) / 100);
-            gameObject.SetActive(false);
-        }
-        else
-        {
-            GameManager.manager.poblacion = GameManager.manager.poblacion - ((GameManager.manager.poblacion * Random.Range(10, 30)) / 100);
+            FindObjectOfType<GameController>().KillPopulation((int)(FindObjectOfType<GameController>().actualPopulation*25)/100);
             gameObject.SetActive(false);
         }
         
