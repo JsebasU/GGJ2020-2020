@@ -29,7 +29,7 @@ public class Spawn : MonoBehaviour
         if (this.isActive)
         {
             this.isActive = true;
-            chaosEvent = Random.Range( Mathf.Max(GameVariables.minTimeEvent - this.disasterCounter,  GameVariables.minEventValue), Mathf.Max(GameVariables.maxTimeEvent - this.disasterCounter, 4));
+            chaosEvent = Random.Range( Mathf.Max(GameVariables.minTimeEvent - this.disasterCounter,  GameVariables.minEventValue), Mathf.Max(GameVariables.maxTimeEvent - this.disasterCounter, 2f));
         }
     }
 
