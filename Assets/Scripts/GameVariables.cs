@@ -25,4 +25,6 @@ public class GameVariables
     
     public static Quaternion CameraInitialPosition = Quaternion.identity;
     public static float CameraInitialScale = 2f;
+
+    public static float WorldRadius = 5f;
 }
