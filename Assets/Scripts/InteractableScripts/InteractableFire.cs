@@ -38,7 +38,7 @@ public class InteractableFire : InteractableBase
             Rain.Play();
         }
         fire.Stop();
-        alreadyCleared = true;
+        alreadyCleared = true; 
         yield return new WaitForSeconds(2);
         gameObject.SetActive(false);
     }
