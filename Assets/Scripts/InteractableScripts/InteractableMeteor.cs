@@ -8,7 +8,7 @@ public class InteractableMeteor : InteractableBase
     [SerializeField] float secondsToClear = 0;
     [SerializeField] Slider temporizador;
     [SerializeField] Meteoro meteoro;
-    [SerializeField] AudioSource explosion;
+    
     bool alreadyCleared = false;
 
     private void OnEnable()

@@ -7,6 +7,7 @@ public class Meteoro : MonoBehaviour
     Rigidbody rb;
     [SerializeField] ParticleSystem particula;
     public float velocity = 0.01f;
+    [SerializeField] AudioSource explosion;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +19,7 @@ public class Meteoro : MonoBehaviour
     {
         if(other.gameObject.tag == "Ground")
         {
+            explosion.Play();
             FindObjectOfType<GameController>().KillPopulation((int)(FindObjectOfType<GameController>().actualPopulation*25)/100);
             StartCoroutine(Delay());
         }

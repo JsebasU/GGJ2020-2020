@@ -13,7 +13,7 @@ public class GameVariables
     public static string CASA_PREFAB = "Prefabs/Casa";
 
     public enum Desatres { Meteorito, Volcan, Radiacion, Pandemia, Incendios};
-    public static List<int> DesastresMultp = new List<int> {1,10,10,15,20};
+    public static List<int> DesastresMultp = new List<int> {1,3,3,4,5};
     public enum GameState {Menu, Game, Win, Lose, Halt};
     
     public static float minTimeEvent = 5;
