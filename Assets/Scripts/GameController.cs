@@ -13,6 +13,7 @@ public class GameController : MonoBehaviour
     public HUDController HudController;
     public CameraController CameraController;
     public WorldScript WorldScript;
+    public AudioController AudioController;
     
     private int[] disasterCount;
     [HideInInspector] public GameVariables.GameState gameState = GameVariables.GameState.Menu;
@@ -38,6 +39,8 @@ public class GameController : MonoBehaviour
             this.CameraController = FindObjectOfType<CameraController>();
         if (this.WorldScript == null)
             this.WorldScript = FindObjectOfType<WorldScript>();
+        if (this.AudioController == null)
+            this.AudioController = FindObjectOfType<AudioController>();
         this.disasterCount = new int[GameVariables.Desatres.GetNames(typeof(GameVariables.Desatres)).Length];
         this.HudController.SetGameController(this);
         this.CameraController.SetGameController(this);
@@ -119,6 +122,7 @@ public class GameController : MonoBehaviour
                     this.actualPopulation -= disasterCount[i] * GameVariables.DesastresMultp[i];
                     Debug.Log($"Damage: " + disasterCount[i].ToString());
                 }
+                this.AudioController.SetNewTension(this.actualPopulation / this.maxPopulation);
                 this.gameTime -= Time.deltaTime;
                 this.HudController.SetTimer(this.gameTime);
                 this.maxPopulation = Mathf.Max(this.actualPopulation, this.maxPopulation);

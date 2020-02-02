@@ -32,4 +32,8 @@ public class GameVariables
     
     public static int seed = 0;
     public static int poblacion = 0;
+
+    public static float MoonSpeed = 10f;
+    public static float CowSpeed = 10f;
+    public static float UfoSpeed = 10f;
 }

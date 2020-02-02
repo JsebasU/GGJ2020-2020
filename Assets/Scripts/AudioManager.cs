@@ -9,11 +9,11 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioSource relaxMusic = null;
     [SerializeField] AudioSource eventsMusic = null;
     [SerializeField] AudioSource tensionMusic = null;
-    [SerializeField] AudioSource mainMenuMusic = null;
+    [SerializeField] AudioSource FX = null;
 
     public static AudioManager manager = null;
-
-    [SerializeField] int actualTension = 0;
+    
+    [SerializeField] float actualTension = 0;
     [SerializeField] int globalTension = 0;
 
     public int Tension
