@@ -5,11 +5,12 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SocialPlatforms;
 
-public class CameraController : MonoBehaviour, IDragHandler
+public class CameraController : MonoBehaviour, IDragHandler, IPointerDownHandler
 {
     private Camera mainCamera;
     private Transform cameraAxis;
     private int touchCount = 0;
+    private Rigidbody axisRigidbody;
 
     // Camera variables
     public float cameraZoomSpeed = 1f;
@@ -33,6 +34,7 @@ public class CameraController : MonoBehaviour, IDragHandler
     {
         this.mainCamera = Camera.main;
         this.cameraAxis = this.mainCamera.transform.parent;
+        this.axisRigidbody = this.cameraAxis.GetComponent<Rigidbody>();
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -50,6 +52,7 @@ public class CameraController : MonoBehaviour, IDragHandler
                                 ? -eventData.delta.y + cameraAngle.x - 360
                                 : -eventData.delta.y + cameraAngle.x, this.cameraMaxAngle.x, this.cameraMaxAngle.y),
                         eventData.delta.x + cameraAngle.y, 0f);
+                    this.axisRigidbody.AddTorque(new Vector3(eventData.delta.y, eventData.delta.x));
                     break;
                 default:
                     if (Input.touchCount >= 2)
@@ -89,5 +92,11 @@ public class CameraController : MonoBehaviour, IDragHandler
                     break;
             }
         }
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        this.axisRigidbody.velocity = Vector3.zero;
+        this.axisRigidbody.angularVelocity = Vector3.zero;
     }
 }
