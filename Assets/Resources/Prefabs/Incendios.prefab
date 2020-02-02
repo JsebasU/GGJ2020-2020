@@ -381,7 +381,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -10072,7 +10072,7 @@ Transform:
   m_GameObject: {fileID: 8988751177943868887}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
   m_LocalPosition: {x: 0, y: -0.07198983, z: 0}
-  m_LocalScale: {x: 30, y: 30, z: 30}
+  m_LocalScale: {x: 0.05048533, y: 0.05048533, z: 0.05048533}
   m_Children:
   - {fileID: 7496482222552669559}
   - {fileID: 4598197958861791048}
