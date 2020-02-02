@@ -5006,7 +5006,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 4009715984682942365, guid: 7db9cdcc0aa6e5844bcfc4acbe504f30,
     type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
