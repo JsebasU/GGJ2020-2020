@@ -514,12 +514,11 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 916258919}
   - {fileID: 1313349459}
   - {fileID: 1307449252}
   - {fileID: 1317401917}
   m_Father: {fileID: 1554181969}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1201,12 +1200,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 916258918}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 607663565}
-  m_RootOrder: 0
+  m_Father: {fileID: 1554181969}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1278,16 +1277,16 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1310169500}
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1332809890}
+        m_MethodName: Menu
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &916258921
 MonoBehaviour:
@@ -1650,6 +1649,25 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1110348345}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1110348347 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 3ad659b431a23fd41904899dbc02c2c3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1110348345}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1110348348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1110348347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82a43b3a3c36f1a49a28e60f42018f42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameManager: {fileID: 0}
 --- !u!1 &1208837522
 GameObject:
   m_ObjectHideFlags: 0
@@ -2047,7 +2065,7 @@ GameObject:
   - component: {fileID: 1307449254}
   - component: {fileID: 1307449253}
   m_Layer: 5
-  m_Name: InputField (TMP)
+  m_Name: PlayerName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2066,7 +2084,7 @@ RectTransform:
   m_Children:
   - {fileID: 688881628}
   m_Father: {fileID: 607663565}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -2234,7 +2252,7 @@ RectTransform:
   m_Children:
   - {fileID: 1453062730}
   m_Father: {fileID: 1554181969}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -2271,7 +2289,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 607663565}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2346,7 +2364,7 @@ RectTransform:
   m_Children:
   - {fileID: 1208837523}
   m_Father: {fileID: 607663565}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -2395,7 +2413,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1317401919}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1332809890}
+        m_MethodName: QuitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1317401919
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2478,6 +2507,7 @@ MonoBehaviour:
   Spawn: {fileID: 0}
   HudController: {fileID: 1554181970}
   CameraController: {fileID: 914910514}
+  WorldScript: {fileID: 0}
   gameState: 0
   actualPopulation: 0
 --- !u!1 &1453062729
@@ -2753,7 +2783,7 @@ MonoBehaviour:
   checkPaddingRequired: 0
   m_isRichText: 1
   m_parseCtrlCharacters: 1
-  m_isOrthographic: 0
+  m_isOrthographic: 1
   m_isCullingEnabled: 0
   m_ignoreRectMaskCulling: 0
   m_ignoreCulling: 1
@@ -2767,7 +2797,7 @@ MonoBehaviour:
   m_pageToDisplay: 1
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
-    textComponent: {fileID: 0}
+    textComponent: {fileID: 1473938586}
     characterCount: 0
     spriteCount: 0
     spaceCount: 0
@@ -2775,7 +2805,7 @@ MonoBehaviour:
     linkCount: 0
     lineCount: 0
     pageCount: 0
-    materialCount: 0
+    materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
@@ -2891,6 +2921,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 914910510}
+  - {fileID: 916258919}
   - {fileID: 607663565}
   - {fileID: 1310169501}
   m_Father: {fileID: 0}
@@ -2915,6 +2946,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   populationSlider: {fileID: 86902485}
   populationCounter: {fileID: 212207039}
+  playerName: {fileID: 1307449253}
+  menuView: {fileID: 607663564}
+  HUDView: {fileID: 1310169500}
 --- !u!1 &1656688995
 GameObject:
   m_ObjectHideFlags: 0

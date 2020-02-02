@@ -10,7 +10,7 @@ public class playerSeed : MonoBehaviour
     public void setPlayerSeed(string name)
     {
         int seed = int.Parse(name);
-        GameManager.manager.seed = seed;
+        GameVariables.seed = seed;
     }
 }
 

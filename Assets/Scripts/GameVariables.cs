@@ -29,4 +29,7 @@ public class GameVariables
     public static float CameraInitialScale = 2f;
 
     public static float WorldRadius = 5f;
+    
+    public static int seed = 0;
+    public static int poblacion = 0;
 }

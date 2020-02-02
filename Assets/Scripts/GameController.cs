@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour
     public Spawn Spawn;
     public HUDController HudController;
     public CameraController CameraController;
+    public WorldScript WorldScript;
     
     private int[] disasterCount;
     [HideInInspector] public GameVariables.GameState gameState = GameVariables.GameState.Menu;
@@ -19,6 +20,8 @@ public class GameController : MonoBehaviour
     [HideInInspector] public float actualPopulation = 0f;
     private float maxPopulation = 0f;
     private float gameTime;
+
+    private bool pause = true;
     
     public GameVariables.GameState GetGameState()
     {
@@ -33,6 +36,8 @@ public class GameController : MonoBehaviour
             this.HudController = FindObjectOfType<HUDController>();
         if (this.CameraController == null)
             this.CameraController = FindObjectOfType<CameraController>();
+        if (this.WorldScript == null)
+            this.WorldScript = FindObjectOfType<WorldScript>();
         this.disasterCount = new int[GameVariables.Desatres.GetNames(typeof(GameVariables.Desatres)).Length];
         this.HudController.SetGameController(this);
         this.CameraController.SetGameController(this);
@@ -46,8 +51,11 @@ public class GameController : MonoBehaviour
 
     public void StartGame()
     {
+        if(gameState == GameVariables.GameState.Game)
+            return;
         this.actualPopulation = GameVariables.InitialPopulation;
         this.maxPopulation = GameVariables.InitialPopulation;
+        this.WorldScript.changeSeed(this.HudController.playerName.text);
         StartCoroutine(StartGameAnimation());
     }
 
@@ -68,11 +76,20 @@ public class GameController : MonoBehaviour
         gameState = GameVariables.GameState.Game;
     }
 
-    public void Menu(bool pause = false)
+    public void Menu()
     {
+        pause = !pause;
         if (pause)
         {
-            Time.timeScale = Time.timeScale != 0 ? 0 : 1;
+            Time.timeScale = 0;
+            this.HudController.SetMenuView(true);
+            this.HudController.SetHUDView(false);
+        }
+        else
+        {
+            Time.timeScale = 1;
+            this.HudController.SetHUDView(true);
+            this.HudController.SetMenuView(false);
         }
         
     }

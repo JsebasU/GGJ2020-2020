@@ -8,7 +8,7 @@ public class Population : MonoBehaviour
     public PoolObj pool;
     void Update()
     {
-        if(GameManager.manager.poblacion > poblacion)
+        if(GameVariables.poblacion > poblacion)
         {
             mirarPlaneta(GameVariables.CASA_PREFAB);
             poblacion += 10;

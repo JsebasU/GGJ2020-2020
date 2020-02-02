@@ -41,6 +41,7 @@ Material:
     - Vector1_A7B831DC: 100
     - Vector1_AC4675C2: -12
     - _Ruido: 7
+    - _seed: 17524620
     m_Colors:
     - Vector2_E06B3EC4: {r: 16, g: 8, b: 0, a: 0}
     - Vector2_EF7543CA: {r: 0.7, g: 1, b: 0, a: 0}
