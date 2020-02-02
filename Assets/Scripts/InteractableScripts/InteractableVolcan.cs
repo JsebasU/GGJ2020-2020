@@ -6,10 +6,10 @@ using UnityEngine.UI;
 public class InteractableVolcan : InteractableBase
 {
     [SerializeField] float secondsToClear = 0;
-    [SerializeField] Slider temporizador;
+    [SerializeField] Image temporizador;
     bool alreadyCleared = false;
     [SerializeField] bool nuke = false;
-
+    
     private void OnEnable()
     {
         alreadyCleared = false;
@@ -18,15 +18,16 @@ public class InteractableVolcan : InteractableBase
 
     IEnumerator Emerge()
     {
-        Vector3 actualPos = transform.position;
+        Vector3 actualPos = transform.localPosition;
         float value = 0;
         while(value <= 1)
         {
             value += Time.deltaTime;
-            transform.position = new Vector3(actualPos.x - 2 + (value * 2), actualPos.y - 2 + (value * 2), actualPos.z - 2 + (value * 2));
+            transform.localPosition = Vector3.Lerp(Vector3.zero, actualPos, value);
             yield return null;
         }
         yield return new WaitForSeconds(3);
+        Debug.Log("Subscribe to damage counter");
         if (nuke)
         {
             FindObjectOfType<GameController>().CountDisaster(GameVariables.Desatres.Radiacion, true);
@@ -39,23 +40,24 @@ public class InteractableVolcan : InteractableBase
 
     void Awake()
     {
-        secondsToClear = Random.Range(2f, 10f);
-        temporizador.value = 0;
-        temporizador.maxValue = secondsToClear;
+        secondsToClear = Random.Range(1f, 3f);
+        temporizador.fillAmount = 1f;
     }
 
     public override void OnStartInteraction()
     {
+        Debug.Log("Start Interaction");
         StartCoroutine(SimpleCompleteEvent());
     }
 
     IEnumerator SimpleCompleteEvent()
     {
-        float value = temporizador.value;
-        while (value < secondsToClear)
+        float value = temporizador.fillAmount;
+        
+        while (value > 0f)
         {
-            value += Time.deltaTime;
-            temporizador.value = value;
+            value -= Time.deltaTime / secondsToClear;
+            temporizador.fillAmount =  value;
             yield return null;
         }
         alreadyCleared = true;
@@ -72,14 +74,21 @@ public class InteractableVolcan : InteractableBase
 
     IEnumerator Esconde()
     {
-        Debug.Log("");
-        Vector3 actualPos = transform.position;
+        Vector3 actualPos = transform.localPosition;
         float value = 0;
         while (value <= 1)
         {
             value += Time.deltaTime;
-            transform.position = new Vector3(actualPos.x - (value * 2), actualPos.y - (value * 2), actualPos.z - (value * 2));
+            transform.localPosition = Vector3.Lerp(actualPos, Vector3.zero, value);
             yield return null;
+        }
+        if (nuke)
+        {
+            FindObjectOfType<GameController>().CountDisaster(GameVariables.Desatres.Radiacion, false);
+        }
+        else
+        {
+            FindObjectOfType<GameController>().CountDisaster(GameVariables.Desatres.Incendios, false);
         }
         gameObject.SetActive(false);
     }

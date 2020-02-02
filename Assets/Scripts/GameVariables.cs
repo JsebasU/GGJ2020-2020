@@ -20,7 +20,7 @@ public class GameVariables
     public static float maxTimeEvent = 10;
     public static float gameTime = 120;
 
-    public static int PopulationIncrem = 10;
+    public static int PopulationIncrem = 3;
     public static int InitialPopulation = 10;
     
     public static Quaternion CameraInitialPosition = Quaternion.identity;

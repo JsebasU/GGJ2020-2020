@@ -11,11 +11,7 @@ public class Spawn : MonoBehaviour
     private bool isActive;
     private GameController _gameController;
     [SerializeField] Transform center;
-
-    private void Start()
-    {
-    }
-
+    
     public void SetGameController(GameController controller)
     {
         this._gameController = controller;
@@ -100,16 +96,17 @@ public class Spawn : MonoBehaviour
             }
         }
     }
-    
+
+    Vector3 angleCorrection = new Vector3(-180, 0,0);
     void mirarPlaneta(string name)
     {
-
         GameObject met = pool.GetObject(name);
         met.transform.SetParent(center);
-        met.transform.localPosition = new Vector3(0, 0, 1);
         center.rotation = Quaternion.Euler(Random.Range(-180, 180), Random.Range(-180, 180), Random.Range(-180, 180));
+        met.transform.localPosition = new Vector3(0, 0, 1);
         met.transform.SetParent(null);
-        met.transform.right = -Vector3.zero;
+        met.transform.LookAt(Vector3.zero);
+        met.transform.localEulerAngles += angleCorrection;
         met.SetActive(true);
     }
 }

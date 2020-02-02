@@ -14,9 +14,9 @@ public class GameController : MonoBehaviour
     public CameraController CameraController;
     
     private int[] disasterCount;
-    public GameVariables.GameState gameState = GameVariables.GameState.Menu;
-
-    public float actualPopulation = 0f;
+    [HideInInspector] public GameVariables.GameState gameState = GameVariables.GameState.Menu;
+    
+    [HideInInspector] public float actualPopulation = 0f;
     private float maxPopulation = 0f;
     private float gameTime;
     
@@ -41,6 +41,7 @@ public class GameController : MonoBehaviour
     public void CountDisaster(GameVariables.Desatres desastre, bool incrementa = false)
     {
         this.disasterCount[(int) desastre] += incrementa? 1 : -1;
+        this.disasterCount[(int) desastre] = Mathf.Max(this.disasterCount[(int) desastre], 0);
     }
 
     public void StartGame()
@@ -82,7 +83,7 @@ public class GameController : MonoBehaviour
         Application.Quit();
     }
     
-    private void Update()
+    private void FixedUpdate()
     {
         switch (gameState)
         {
@@ -95,6 +96,7 @@ public class GameController : MonoBehaviour
                 for (int i = 0; i < disasterCount.Length; i++)
                 {
                     this.actualPopulation -= disasterCount[i] * GameVariables.DesastresMultp[i];
+                    Debug.Log($"Damage: " + disasterCount[i].ToString());
                 }
                 this.gameTime -= Time.deltaTime;
                 this.HudController.SetTimer(this.gameTime);

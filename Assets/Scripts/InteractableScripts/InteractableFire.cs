@@ -10,17 +10,19 @@ public class InteractableFire : InteractableBase
     [SerializeField] ParticleSystem Rain;
     [SerializeField] ParticleSystem fire;
     [SerializeField] bool fuego = false;
-    
+
     bool alreadyCleared = false;
 
     private void OnEnable()
     {
         alreadyCleared = false;
+        StartCoroutine(DelayToKill());
     }
 
     IEnumerator DelayToKill()
     {
         yield return new WaitForSeconds(3);
+        Debug.Log("Subscribe to damage counter");
         if (fuego)
         {
             FindObjectOfType<GameController>().CountDisaster(GameVariables.Desatres.Incendios, true);
@@ -55,6 +57,7 @@ public class InteractableFire : InteractableBase
         }
         fire.Stop();
         alreadyCleared = true;
+        Debug.Log("Subscribe to damage counter");
         if (fuego)
         {
             FindObjectOfType<GameController>().CountDisaster(GameVariables.Desatres.Incendios, false);

@@ -15,7 +15,7 @@ public class Meteoro : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(gameObject.tag == "Ground")
+        if(other.gameObject.tag == "Ground")
         {
             FindObjectOfType<GameController>().KillPopulation((int)(FindObjectOfType<GameController>().actualPopulation*25)/100);
             gameObject.SetActive(false);
