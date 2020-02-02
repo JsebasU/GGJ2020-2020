@@ -8,6 +8,7 @@ public class InteractableVolcan : InteractableBase
     [SerializeField] float secondsToClear = 0;
     [SerializeField] Slider temporizador;
     bool alreadyCleared = false;
+    [SerializeField] bool nuke = false;
 
     private void OnEnable()
     {
@@ -26,7 +27,14 @@ public class InteractableVolcan : InteractableBase
             yield return null;
         }
         yield return new WaitForSeconds(3);
-        //add volcanEnAmenazas
+        if (nuke)
+        {
+            FindObjectOfType<GameController>().CountDisaster(GameVariables.Desatres.Radiacion, true);
+        }
+        else
+        {
+            FindObjectOfType<GameController>().CountDisaster(GameVariables.Desatres.Incendios, true);
+        }
     }
 
     void Awake()
@@ -51,6 +59,14 @@ public class InteractableVolcan : InteractableBase
             yield return null;
         }
         alreadyCleared = true;
+        if (nuke)
+        {
+            FindObjectOfType<GameController>().CountDisaster(GameVariables.Desatres.Radiacion, false);
+        }
+        else
+        {
+            FindObjectOfType<GameController>().CountDisaster(GameVariables.Desatres.Incendios, false);
+        }
         StartCoroutine(Esconde());
     }
 

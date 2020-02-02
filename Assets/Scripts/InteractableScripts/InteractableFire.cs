@@ -9,10 +9,26 @@ public class InteractableFire : InteractableBase
     [SerializeField] Slider temporizador;
     [SerializeField] ParticleSystem Rain;
     [SerializeField] ParticleSystem fire;
+    [SerializeField] bool fuego = false;
+    
     bool alreadyCleared = false;
+
     private void OnEnable()
     {
         alreadyCleared = false;
+    }
+
+    IEnumerator DelayToKill()
+    {
+        yield return new WaitForSeconds(3);
+        if (fuego)
+        {
+            FindObjectOfType<GameController>().CountDisaster(GameVariables.Desatres.Incendios, true);
+        }
+        else
+        {
+            FindObjectOfType<GameController>().CountDisaster(GameVariables.Desatres.Pandemia, true);
+        }
     }
 
     void Awake()
@@ -38,7 +54,15 @@ public class InteractableFire : InteractableBase
             Rain.Play();
         }
         fire.Stop();
-        alreadyCleared = true; 
+        alreadyCleared = true;
+        if (fuego)
+        {
+            FindObjectOfType<GameController>().CountDisaster(GameVariables.Desatres.Incendios, false);
+        }
+        else
+        {
+            FindObjectOfType<GameController>().CountDisaster(GameVariables.Desatres.Pandemia, false);
+        }
         yield return new WaitForSeconds(2);
         gameObject.SetActive(false);
     }
@@ -47,7 +71,7 @@ public class InteractableFire : InteractableBase
     {
         if (alreadyCleared == false)
         {
-            StopAllCoroutines();
+            StopCoroutine(SimpleCompleteEvent());
         }
     }
 }

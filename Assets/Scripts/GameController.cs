@@ -14,9 +14,9 @@ public class GameController : MonoBehaviour
     public CameraController CameraController;
     
     private int[] disasterCount;
-    private GameVariables.GameState gameState = GameVariables.GameState.Menu;
+    public GameVariables.GameState gameState = GameVariables.GameState.Menu;
 
-    private float actualPopulation = 0f;
+    public float actualPopulation = 0f;
     private float maxPopulation = 0f;
     private float gameTime;
     
