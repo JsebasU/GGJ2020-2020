@@ -6,7 +6,7 @@ using UnityEngine;
 public class InteractableFire : InteractableBase
 {
     [SerializeField] float secondsToClear = 0;
-    [SerializeField] Slider temporizador;
+    [SerializeField] Image temporizador;
     [SerializeField] ParticleSystem Rain;
     [SerializeField] ParticleSystem fire;
     [SerializeField] bool fuego = false;
@@ -37,9 +37,8 @@ public class InteractableFire : InteractableBase
 
     void Awake()
     {
-        secondsToClear = Random.Range(2f, 10f);
-        temporizador.value = 0;
-        temporizador.maxValue = secondsToClear;
+        secondsToClear = Random.Range(1f, 3f);
+        temporizador.fillAmount = 1;
     }
 
     public override void OnStartInteraction()
@@ -54,11 +53,11 @@ public class InteractableFire : InteractableBase
 
     IEnumerator SimpleCompleteEvent()
     {
-        float value = temporizador.value;
-        while (value < secondsToClear)
+        float value = temporizador.fillAmount;
+        while (value > 0)
         {
-            value += Time.deltaTime;
-            temporizador.value = value;
+            value -= Time.deltaTime/secondsToClear;
+            temporizador.fillAmount = value;
             yield return null;
             Rain.Play();
         }

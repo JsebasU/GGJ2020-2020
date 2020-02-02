@@ -6,7 +6,7 @@ using UnityEngine;
 public class InteractableMeteor : InteractableBase
 {
     [SerializeField] float secondsToClear = 0;
-    [SerializeField] Slider temporizador;
+    [SerializeField] Image temporizador;
     [SerializeField] Meteoro meteoro;
     
     bool alreadyCleared = false;
@@ -18,9 +18,8 @@ public class InteractableMeteor : InteractableBase
 
     void Awake()
     {
-        secondsToClear = Random.Range(2f, 10f);
-        temporizador.value = 0;
-        temporizador.maxValue = secondsToClear;
+        secondsToClear = Random.Range(1f, 3f);
+        temporizador.fillAmount = 0;
     }
 
     public override void OnStartInteraction()
@@ -32,11 +31,11 @@ public class InteractableMeteor : InteractableBase
 
     IEnumerator SimpleCompleteEvent()
     {
-        float value = temporizador.value;
+        float value = temporizador.fillAmount;
         while (value < secondsToClear)
         {
-            value += Time.deltaTime;
-            temporizador.value = value;
+            value += Time.deltaTime / secondsToClear;
+            temporizador.fillAmount = value;
             yield return null;
         }
         meteoro.velocity = -0.5f;
