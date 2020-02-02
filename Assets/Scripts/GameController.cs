@@ -28,7 +28,6 @@ public class GameController : MonoBehaviour
     private void Start()
     {
         this.disasterCount = new int[GameVariables.Desatres.GetNames(typeof(GameVariables.Desatres)).Length];
-        this.Spawn.SetGameController(this);
         this.HudController.SetGameController(this);
         this.CameraController.SetGameController(this);
     }

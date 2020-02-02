@@ -15,6 +15,7 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField] int actualTension = 0;
     [SerializeField] int globalTension = 0;
+
     public int Tension
     {
         get
@@ -86,32 +87,13 @@ public class AudioManager : MonoBehaviour
 
     private void Awakes()
     {
-        if (manager == null)
-        {
-            manager = this;
-            DontDestroyOnLoad(gameObject);
-
-            relaxMusic.volume = 1;
-            eventsMusic.volume = 0;
-            tensionMusic.volume = 0;
-            relaxMusic.Play();
-            eventsMusic.Play();
-            tensionMusic.Play();
-            actualTension = Tension;
-
-            /*if (SceneManager.GetActiveScene().buildIndex == 0)
-            {
-                //mainmenu
-            }
-            else
-            {
-                //InGame
-            }*/
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        relaxMusic.volume = 1;
+        eventsMusic.volume = 0;
+        tensionMusic.volume = 0;
+        relaxMusic.Play();
+        eventsMusic.Play();
+        tensionMusic.Play();
+        actualTension = Tension;
     }
 
     IEnumerator FadeOut(float valueVolumen,AudioSource FadeOut)

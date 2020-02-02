@@ -5,12 +5,23 @@ using UnityEngine;
 public class Spawn : MonoBehaviour
 {
     public PoolObj pool;
-    public SphereCollider WorldCollider;
     GameVariables.Desatres desatres = GameVariables.Desatres.Incendios;
     float timer;
     float chaosEvent;
     private bool isActive;
     private GameController _gameController;
+    [SerializeField] Transform center;
+
+    private void Awake()
+    {
+        GameObject met = new GameObject();
+        met.SetActive(false);
+        met.transform.SetParent(center);
+        met.transform.localPosition = new Vector3(0, 0, 1);
+        center.rotation = Quaternion.Euler(Random.Range(-180, 180), Random.Range(-180, 180), Random.Range(-180, 180));
+        met.transform.SetParent(null);
+        met.SetActive(true);
+    }
 
     public void SetGameController(GameController controller)
     {
@@ -58,7 +69,7 @@ public class Spawn : MonoBehaviour
             {
                 Debug.Log("Meteorito");
 
-                float Point = WorldCollider.radius;
+                float Point = 0;
 
                     float usedRadius = 0;
 
@@ -115,7 +126,7 @@ public class Spawn : MonoBehaviour
     
     void mirarPlaneta(string name)
     {
-        float Point = WorldCollider.radius;
+        float Point = 0;
 
         float usedRadius = 0;
 
