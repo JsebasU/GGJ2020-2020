@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -694,7 +694,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 616956421}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.6430081, y: -0.27603358, z: 1.4971143}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1173759317}
@@ -730,7 +730,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 28078603827c5c346b33d11ab1197218, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -822,7 +822,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 664316949}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.6430081, y: -0.27603358, z: 1.4971143}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1173759317}
@@ -1843,16 +1843,17 @@ MonoBehaviour:
   - {fileID: 664316950}
   - {fileID: 1283148881}
   - {fileID: 1462465495}
+  - {fileID: 616956422}
+  fxAudioSource: {fileID: 616956422}
   EasyMix: {fileID: -626865339875413130, guid: 5ff9a96c320778a49809d27af1c1df4b, type: 2}
   MidMix: {fileID: 8072427521976968477, guid: 5ff9a96c320778a49809d27af1c1df4b, type: 2}
   HardMix: {fileID: -8922732424413070928, guid: 5ff9a96c320778a49809d27af1c1df4b,
     type: 2}
+  FX: {fileID: 8622793945136669240, guid: 5ff9a96c320778a49809d27af1c1df4b, type: 2}
+  startClip: {fileID: 8300000, guid: b8c26b2aad8a73946a661365ab960b7e, type: 3}
   easyClip: {fileID: 8300000, guid: 28078603827c5c346b33d11ab1197218, type: 3}
   midClip: {fileID: 8300000, guid: b49715d3e2f860442954024834aedcc3, type: 3}
   hardClip: {fileID: 8300000, guid: d341fe19e03328a4295d63e67bb23c08, type: 3}
-  easyRange: {x: 0.6, y: 1}
-  midRange: {x: 0.35, y: 0.75}
-  hardRange: {x: 0, y: 0.4}
 --- !u!4 &1173759317
 Transform:
   m_ObjectHideFlags: 0
@@ -1861,7 +1862,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1173759315}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.74430335, y: 0.422831, z: -1.5015179}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 664316951}
@@ -2118,7 +2119,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1283148880}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.6430081, y: -0.27603358, z: 1.4971143}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1173759317}
@@ -2948,7 +2949,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1462465494}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.6430081, y: -0.27603358, z: 1.4971143}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1173759317}

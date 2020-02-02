@@ -22,7 +22,7 @@ public class GameVariables
 
     public static float minEventValue = 1f;
     
-    public static int PopulationIncrem = 3;
+    public static int PopulationIncrem = 1;
     public static int InitialPopulation = 10;
     
     public static Quaternion CameraInitialPosition = Quaternion.identity;
@@ -38,4 +38,6 @@ public class GameVariables
     public static float UfoSpeed = 10f;
 
     public static float CameraSensitivity = 2;
+
+    public static float MusicFadeTime = 1f;
 }
