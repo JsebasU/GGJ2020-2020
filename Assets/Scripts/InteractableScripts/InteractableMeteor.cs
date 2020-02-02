@@ -8,6 +8,7 @@ public class InteractableMeteor : InteractableBase
     [SerializeField] float secondsToClear = 0;
     [SerializeField] Slider temporizador;
     [SerializeField] Meteoro meteoro;
+    
     bool alreadyCleared = false;
 
     private void OnEnable()
@@ -38,7 +39,7 @@ public class InteractableMeteor : InteractableBase
             temporizador.value = value;
             yield return null;
         }
-        meteoro.velocity = -5;
+        meteoro.velocity = -0.5f;
         alreadyCleared = true;
         yield return new WaitForSeconds(2);
         gameObject.SetActive(false);
@@ -48,7 +49,7 @@ public class InteractableMeteor : InteractableBase
     {
         if(alreadyCleared == false)
         {
-            meteoro.velocity = 0.03f;
+            meteoro.velocity = 0.01f;
             StopAllCoroutines();
         }
     }

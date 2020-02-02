@@ -43,7 +43,7 @@ public class Spawn : MonoBehaviour
             {
                 chaosEvent = Random.Range(GameVariables.minTimeEvent, GameVariables.maxTimeEvent);
                 desatres = (GameVariables.Desatres) Random.Range(0,
-                    GameVariables.Desatres.GetNames(typeof(GameVariables.Desatres)).Length - 1);
+                    GameVariables.Desatres.GetNames(typeof(GameVariables.Desatres)).Length);
                 Debug.Log(desatres);
                 cases();
                 timer = 0;

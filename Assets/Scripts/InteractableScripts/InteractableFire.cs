@@ -10,6 +10,8 @@ public class InteractableFire : InteractableBase
     [SerializeField] ParticleSystem Rain;
     [SerializeField] ParticleSystem fire;
     [SerializeField] bool fuego = false;
+    [SerializeField] AudioSource lluvia;
+    [SerializeField] AudioSource extingir;
 
     bool alreadyCleared = false;
 
@@ -43,6 +45,11 @@ public class InteractableFire : InteractableBase
     public override void OnStartInteraction()
     {
         StartCoroutine(SimpleCompleteEvent());
+        if (fuego)
+        {
+            lluvia.Play();
+            extingir.Play();
+        }
     }
 
     IEnumerator SimpleCompleteEvent()
