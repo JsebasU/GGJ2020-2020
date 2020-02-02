@@ -45,6 +45,8 @@ public class InteractableFire : InteractableBase
     public override void OnStartInteraction()
     {
         StartCoroutine(SimpleCompleteEvent());
+        lluvia.Play();
+        extingir.Play();
     }
 
     IEnumerator SimpleCompleteEvent()
